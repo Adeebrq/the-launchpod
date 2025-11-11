@@ -10,7 +10,6 @@ import TestimonialSection from '@/components/sections/testimonials';
 import FAQSection from '@/components/sections/faq';
 import GetInTouchSection from '@/components/sections/ctaSection';
 import Footer from '@/components/sections/footer';
-import EventCardsCarousel from '@/components/sections/cardsGrid';
 
 const Index = () => {
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
@@ -77,7 +76,6 @@ const Index = () => {
         onBookNowClick={handleBookNowClick}
         onNavigationClick={handleNavigationClick}
       />
-      <EventCardsCarousel/>
       <HeroSection onKeywordSearch={handleKeywordSearch} />
       <AboutSection />
       <ParallaxShowcase/>
