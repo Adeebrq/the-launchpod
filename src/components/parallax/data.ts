@@ -1,36 +1,40 @@
 // data.ts
+import event1 from "/event1.jpeg"
 export const projects = [
+{
+  title: "Startup to Scaleup Series: Financial Readiness",
+  description: "Learn how to structure your business, value it realistically, and build investor trust. This session covers financial structuring, realistic valuation strategies, and managing investor expectations. Features expert insights and a founder success story on turning early challenges into a profitable exit. Limited to 30 founders and professionals.",
+  src: event1,
+  link: "https://lnkd.in/dFpv8_vu",
+  color: "#E8E9E8",
+  tag: "Startup Workshop",
+  date: "13th December 2025",
+  time: "10:00 AM – 1:00 PM",
+  capacity: "30 participants"
+},
+
   {
-    title: "Lorem ipsum dolor.",
-    description: "Lorem ipsum dolor Lorem ipsum dolor sit amet consectetur Arcui.Lorem ipsum dolor.Lorem ipsum dolor sit amet consectetur Arcui.Lorem ipsum dolor sit amet consectetur Arcui.Lorem ipsum dolor.Lorem ipsum dolor",
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    link: "https://example.com",
-    color: "#E8E9E8",
-    tag: "Tag 1",
-    date: "Lorem ipsum dolor",
-    time: "Lorem ipsum dolor",
-    capacity: "Lorem ipsum dolor"
-  },
+  title: "Startup to Scaleup Series: Financial Readiness",
+  description: "Learn how to structure your business, value it realistically, and build investor trust. This session covers financial structuring, realistic valuation strategies, and managing investor expectations. Features expert insights and a founder success story on turning early challenges into a profitable exit. Limited to 30 founders and professionals.",
+  src: event1,
+  link: "https://lnkd.in/dFpv8_vu",
+  color: "#E8E9E8",
+  tag: "Startup Workshop",
+  date: "13th December 2025",
+  time: "10:00 AM – 1:00 PM",
+  capacity: "30 participants"
+},
+
   {
-    title: "Event Title 2",
-    description: "Description text here",
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    link: "https://example.com",
-    color: "#D5D9E3",
-    tag: "Tag 2",
-    date: "15 Nov 2025",
-    time: "2:00 PM",
-    capacity: "50 people"
-  },
-  {
-    title: "Event Title 3",
-    description: "Description text here",
-    src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
-    link: "https://example.com",
-    color: "#C9CDD8",
-    tag: "Tag 3",
-    date: "20 Nov 2025",
-    time: "3:30 PM",
-    capacity: "100 people"
-  }
+  title: "Startup to Scaleup Series: Financial Readiness",
+  description: "Learn how to structure your business, value it realistically, and build investor trust. This session covers financial structuring, realistic valuation strategies, and managing investor expectations. Features expert insights and a founder success story on turning early challenges into a profitable exit. Limited to 30 founders and professionals.",
+  src: event1,
+  link: "https://lnkd.in/dFpv8_vu",
+  color: "#E8E9E8",
+  tag: "Startup Workshop",
+  date: "13th December 2025",
+  time: "10:00 AM – 1:00 PM",
+  capacity: "30 participants"
+}
+
 ];

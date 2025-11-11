@@ -71,11 +71,11 @@ export default function Card({
         {/* Right Side - Content */}
         <div className="w-full sm:w-[55%] flex flex-col justify-center gap-[20px] sm:gap-[30px]">
           {/* Tag */}
-          <div className="inline-block w-fit">
+          {/* <div className="inline-block w-fit">
             <span className="bg-blue-900/40 text-slate-900 px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wide backdrop-blur-sm border border-blue-600/30">
               {tag}
             </span>
-          </div>
+          </div> */}
 
 
           {/* Title */}
