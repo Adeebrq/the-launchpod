@@ -93,14 +93,13 @@ const CircularGallerySection = () => {
         <div className="flex gap-4 items-center md:items-start mb-2">
           <motion.div 
             variants={fadeInUpVariants}
-            className="w-2 h-[60px] md:h-[120px] shrink-0 bg[rgba(189,216,233,0.59)] md:bg-[rgba(189,216,233,0.59)] rounded-[10px]"
+            className="w-2 h-[60px] md:h-[60px] shrink-0 bg[rgba(189,216,233,0.59)] md:bg-[rgba(189,216,233,0.59)] rounded-[10px]"
           />
           <motion.h1 
             variants={fadeInUpVariants}
             className="text-3xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight"
           >
             Moments That Moved Ideas Forward
-            Snapshots from our recent activities.
           </motion.h1>
         </div>
       </motion.div>

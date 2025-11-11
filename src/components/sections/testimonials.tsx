@@ -33,7 +33,7 @@ const testimonials = [
     id: 2,
     text: "From the lighting to the layout! It was an experience.",
     name: "Yousuf",
-    role: "AI & Cybersecurity",
+    role: "Attendee, Crossroads of Intelligence ",
     avatar: "https://via.placeholder.com/48",
   },
   {
@@ -47,7 +47,7 @@ const testimonials = [
     id: 4,
     text: "The space pulls you in! It's interactive, unexpected, and full of energy. I left with new ideas and new connections.",
     name: "Sarah Sheriff",
-    role: "Meet & Greet: Healthcare meets Healthtech",
+    role: "Attendee, Meet & Greet: Healthcare meets Healthtech ",
     avatar: "https://via.placeholder.com/48",
   },
   {
@@ -150,7 +150,7 @@ const testimonials = [
           </motion.p>
 
           {/* Stats */}
-          <motion.div variants={containerVariants} className="flex gap-6 sm:gap-8 flex-wrap">
+          {/* <motion.div variants={containerVariants} className="flex gap-6 sm:gap-8 flex-wrap">
             {stats.map((stat, idx) => (
               <motion.div key={idx} variants={itemVariants}>
                 <p className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">
@@ -159,7 +159,7 @@ const testimonials = [
                 <p className="text-gray-400 text-xs sm:text-sm">{stat.label}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Right Section - Card with Arrows Outside */}

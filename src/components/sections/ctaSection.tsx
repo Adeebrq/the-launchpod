@@ -74,7 +74,9 @@ export default function GetInTouchSection() {
           variants={headingVariants}
           className="text-5xl md:text-6xl font-bold text-center text-[#0f2a4a] mb-6 max-w-4xl"
         >
-          Ready to Host Your Next Big Idea?
+          Ready to Host Your Next 
+          <br/>
+          Big Idea?
         </motion.h1>
 
         {/* Subheading */}
@@ -83,7 +85,7 @@ export default function GetInTouchSection() {
           className="text-center text-gray-700 text-lg max-w-2xl mb-12"
         >
             Book The Launchpod - Chennai's most versatile, tech-enabled venue. 
-            Let's bring your vision to life in the city's most dynamic event space.
+            <br/>Let's bring your vision to life in the city's most dynamic event space.
         </motion.p>
 
         {/* Button Group */}
@@ -109,7 +111,7 @@ export default function GetInTouchSection() {
           </motion.div>
 
           {/* Secondary Button */}
-          <motion.button
+          {/* <motion.button
             whileHover={{ 
               scale: 1.02,
               transition: {
@@ -125,7 +127,7 @@ export default function GetInTouchSection() {
             className="px-8 py-3 rounded-full font-semibold text-[#0f2a4a] border-2 border-[#0f2a4a] hover:bg-[#0f2a4a] hover:text-white transition-colors duration-200"
           >
             Keyword
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </motion.div>
     </section>

@@ -47,10 +47,18 @@ export default function Card({
   const cardScale = useTransform(progress, range, [1, targetScale]);
 
 
+  const handleMoreDetailsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
-    <div ref={containerRef} className={isMobile ? "w-fullflex items-center justify-center py-4" : "h-screen flex items-center justify-center sticky top-0"}>
+    <div ref={containerRef} className={isMobile ? "w-full flex items-center justify-center py-4" : "h-screen flex items-center justify-center sticky top-0"}>
       <motion.div
-        className="relative w-full sm:w-[1200px] max-w-[92vw]  border border-gray-400  h-auto sm:h-[600px]  rounded-[25px] p-6 sm:p-[60px] flex flex-col sm:flex-row items-center gap-6 sm:gap-[80px]"
+        className="relative w-full sm:w-[1200px] max-w-[92vw] border border-gray-400 h-auto sm:h-[600px] rounded-[25px] p-6 sm:p-[60px] flex flex-col sm:flex-row items-center gap-6 sm:gap-[80px]"
         style={{ 
           backgroundColor: 'white',
           scale: (isMobile ? 1 : (cardScale as unknown as number)) as any,
@@ -79,7 +87,7 @@ export default function Card({
 
 
           {/* Title */}
-          <h1 className="text-[28px] sm:text-[48px] font-bold text-black leading-tight m-0">
+          <h1 className="text-[28px] sm:text-[28px] font-bold text-black leading-tight m-0">
             {title}
           </h1>
 
@@ -134,6 +142,18 @@ export default function Card({
               <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
             </div>
           </div>
+
+          {/* More Details Button */}
+          {link && (
+            <motion.button
+              onClick={handleMoreDetailsClick}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="mt-4 sm:mt-6 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#001039] text-white font-semibold rounded-full hover:bg-[#002055] transition-colors duration-200 text-sm sm:text-base self-start"
+            >
+              More Details
+            </motion.button>
+          )}
         </div>
       </motion.div>
     </div>

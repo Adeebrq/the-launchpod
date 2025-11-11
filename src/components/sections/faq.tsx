@@ -109,7 +109,7 @@ export default function FAQSection() {
           variants={fadeInUpVariants}
           className="text-blue-400 text-sm font-medium mb-4 tracking-wide px-4 md:px-8"
         >
-          FAQ's
+          FAQs
         </motion.p>
         
         {/* Heading with Left Separator */}

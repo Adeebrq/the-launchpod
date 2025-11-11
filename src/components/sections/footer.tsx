@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, Youtube, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, Facebook, Youtube, Phone, Mail, MapPin, Linkedin } from 'lucide-react';
 import BgVideo from "../../assets/bgVideo.mp4"
 
 // Scroll navigation helper function
@@ -65,23 +65,22 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               <a 
-                href="#" 
+  href=" https://share.google/H6nVYmJ0EBzJg9WXw" 
+  target="_blank"
+  rel="noopener noreferrer"
                 className="border border-white rounded-full p-2 hover:bg-white hover:text-black transition-colors"
               >
                 <Instagram size={20} />
               </a>
-              <a 
-                href="#" 
-                className="border border-white rounded-full p-2 hover:bg-white hover:text-black transition-colors"
-              >
-                <Facebook size={20} />
-              </a>
-              <a 
-                href="#" 
-                className="border border-white rounded-full p-2 hover:bg-white hover:text-black transition-colors"
-              >
-                <Youtube size={20} />
-              </a>
+             <a 
+  href="https://www.linkedin.com/company/thelaunch-pod/" 
+  target="_blank"
+  rel="noopener noreferrer"
+  className="border border-white rounded-full p-2 hover:bg-white hover:text-black transition-colors"
+>
+  <Linkedin size={20} />
+</a>
+
             </div>
           </div>
 
