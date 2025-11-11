@@ -3,13 +3,13 @@ import BgVideo from "../assets/bgVideo.mp4"
 import sparkles from "../assets/sparkles.svg"
 
 const bannerItems = [
-  'Timeless Craftsmanship',
-  'Modern Elegance',
-  'Timeless Craftsmanship',
-  'Modern Elegance',
-  'Timeless Craftsmanship',
-  'Modern Elegance',
-  'Timeless Craftsmanship',
+  'Company Meetups',
+  'Product Launch Rooms',
+  'Modern Conference Areas',
+  'Casual Connects',
+  'Workshops',
+  'Private Company Meetups',
+  'Startup Pitch Sessions',
   'Modern Elegance',
 ];
 

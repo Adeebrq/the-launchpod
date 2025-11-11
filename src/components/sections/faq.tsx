@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import bgVideo from "../../assets/bgVideo.mp4"
 
 interface FAQItem {
@@ -11,66 +11,42 @@ interface FAQItem {
   answer: string;
 }
 
-const faqData: FAQItem[] = [
+const faqData = [
   {
     id: '1',
-    question: 'What is the purpose of this website?',
-    answer: 'This website serves as a comprehensive platform for exploring our products and services. We are here to help you find everything you need in one place.',
+    question: 'What is THE LAUNCHPOD, and what professional spaces do we offer on Mount Road, Chennai?',
+    answer: 'THE LAUNCHPOD sits along Mount Road in Chennai, offering fresh spots for events or company meetups. Whether you need room to brainstorm, space to host investors, or a place that just works  this spot’s built with startups and pros in mind. Swapping rigid setups for adaptable layouts, it keeps things moving without hassle. Pick your vibe, lock in the date, tech included  no extra steps.',
   },
   {
     id: '2',
-    question: 'What is the purpose of this website?',
-    answer: 'This website is designed to provide seamless access to our full range of offerings, from products to customer support. We strive to make your experience smooth and satisfying.',
+    question: 'What types of event venues does THE LAUNCHPOD offer on Mount Road, Chennai?',
+    answer: 'THE LAUNCHPOD offers a variety of work-friendly spaces near Mount Road, Chennai  including modern conference areas, compact seminar zones, product launch rooms, creative team hangouts, and flexible setups suited for company meetups, casual connects, or skill-building sessions.',
   },
   {
     id: '3',
-    question: 'What is the purpose of this website?',
-    answer: 'Our website aims to connect customers with innovative solutions and expert guidance. Everything is organized to help you find answers quickly and easily.',
+    question: 'How can I book a THE LAUNCHPOD event hall for corporate gatherings or product launches near Mount Road?',
+    answer: 'You can grab a slot at THE LAUNCHPOD event space quickly using the booking tool on our site, or contact our team directly for custom options and availability near Mount Road in Chennai.',
   },
   {
     id: '4',
-    question: 'What is your policy on product returns for office spaces?',
-    answer: 'We offer a 30-day return policy on all office space products. Items must be in original condition with all packaging intact.',
+    question: 'What flexible event spaces are available at THE LAUNCHPOD events?',
+    answer: 'THE LAUNCHPOD setup shifts easily for small events such as close-knit team huddles, startup pitch sessions, private company meetups, and workshops. It fits up to 40 people, with adaptable seating and customizable tech setups to match your needs.',
   },
   {
     id: '5',
-    question: 'What is your policy on product returns for office spaces?',
-    answer: 'Product returns for office spaces can be initiated within 30 days of purchase. Please ensure items are unused and in their original packaging.',
+    question: 'How do I reserve a conference hall, seminar room, or training space at THE LAUNCHPOD?',
+    answer: 'To book a meeting area, workshop spot, or talk room, head to our website or reach out directly to our support team to discuss timing, requirements, and plans that fit your event.',
   },
   {
     id: '6',
-    question: 'How do I contact support?',
-    answer: 'You can reach our support team at support@example.com or use the contact form on our website. We typically respond within 24 hours.',
-  },
-  {
-    id: '7',
-    question: 'How do I contact support?',
-    answer: 'Support is available via email at support@example.com, through our website contact form, or by phone during business hours.',
-  },
-  {
-    id: '8',
-    question: 'Do you offer installation services?',
-    answer: 'Yes, we offer professional installation services for all our products. Please contact our support team for pricing and availability.',
-  },
-  {
-    id: '9',
-    question: 'Do you offer discounts for bulk purchases?',
-    answer: 'Absolutely! We provide competitive discounts for bulk orders. Contact our sales team for a custom quote.',
-  },
-  {
-    id: '10',
-    question: 'Are there membership benefits available?',
-    answer: 'Yes, we offer various membership tiers with exclusive benefits including early access to new products and special discounts.',
-  },
-  {
-    id: '11',
-    question: 'What payment methods are accepted?',
-    answer: 'We accept all major credit cards, PayPal, bank transfers, and cryptocurrency payments for your convenience.',
+    question: 'What makes THE LAUNCHPOD a premier choice for business workshops, industry seminars, and strategic networking events in Mount Road, Chennai?',
+    answer: 'THE LAUNCHPOD stands out on Mount Road with ready-to-use spaces for every business need. Smart setups and smooth planning make it ideal for training sessions, meetups, and corporate gatherings. From start to finish, services align seamlessly, helping events happen without fuss.',
   },
 ];
 
+
 // Animation variants
-const fadeInUpVariants = {
+const fadeInUpVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: 50,
@@ -82,12 +58,12 @@ const fadeInUpVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1]
+      ease: [0.22, 1, 0.36, 1] as const
     }
   }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -97,14 +73,6 @@ const staggerContainer = {
     }
   }
 };
-
-const animateOnView = (delay = 0) => ({
-  initial: "hidden",
-  whileInView: "visible",
-  viewport: { once: false, margin: "-100px" },
-  variants: fadeInUpVariants,
-  transition: { delay }
-});
 
 export default function FAQSection() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -176,7 +144,7 @@ export default function FAQSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           {faqData.map((item) => {
             const isExpanded = expandedId === item.id;

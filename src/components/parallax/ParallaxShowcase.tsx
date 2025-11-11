@@ -12,7 +12,7 @@ export default function ParallaxShowcase() {
   });
 
   return (
-    <main ref={containerRef as any} className="min-h-[100vh] w-full justify-center items-center py-[5vh] px-4 sm:px-[50px] scrollbar-hide">
+    <main id="events" ref={containerRef as any} className="min-h-[100vh] w-full justify-center items-center py-[5vh] px-4 sm:px-[50px] scrollbar-hide">
       <div className='p-4 sm:p-10 pb-0'>
         <p className="bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent py-2">
           Upcoming events
@@ -27,7 +27,7 @@ export default function ParallaxShowcase() {
       </div>
 
       {/* Desktop/Tablet: Parallax with sticky video */}
-      <div className='relative rounded-3xl w-full hidden sm:block'>
+      <div className='relative rounded-3xl w-full hidden sm:block '>
         <div className='sticky top-[5vh] h-[800px] rounded-3xl w-full overflow-hidden z-0'>
           <video
             autoPlay
@@ -40,7 +40,7 @@ export default function ParallaxShowcase() {
           </video>
         </div>
 
-        <div className="relative -mt-[800px] z-10">
+        <div className="relative -mt-[800px] z-10 text-white">
           {projects.map((project, i) => {
             const targetScale = 1 - ((projects.length - i) * 0.05);
             return (

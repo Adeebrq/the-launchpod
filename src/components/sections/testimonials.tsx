@@ -20,29 +20,44 @@ const TestimonialSection: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
 
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      text: 'Lorem ipsum dolor Lorem ipsum dolor sit amet consecteturaArcuui.Lorem ipsum dolor.Lorem ipsum dolor Lorem ipsum dolor sit amet consecteturaArcuui.Lorem ipsum dolor sit amet consecteturaArcuui.Lorem i...',
-      name: 'Name',
-      role: 'Lorem ipsum',
-      avatar: 'https://via.placeholder.com/48',
-    },
-    {
-      id: 2,
-      text: 'Lorem ipsum dolor Lorem ipsum dolor sit am ipsum dolor.Lorem ipsum dolor Lorem ipsum dolor sit amet consecteturaArcuui.Lorem ipsum dolor sit amet consecteturaArcuui.Lorem i...',
-      name: 'Narrrme',
-      role: 'Lorem ipsum',
-      avatar: 'https://via.placeholder.com/48',
-    },
-    {
-      id: 3,
-      text: 'Lorem ipsum dolor Lorem ipsum dolororem i...',
-      name: 'Narrrdscme',
-      role: 'Lorem ipsum',
-      avatar: 'https://via.placeholder.com/48',
-    },
-  ];
+const testimonials = [
+  {
+    id: 1,
+    text: "The Launchpod completely redefined what hosting an event feels like. Our audience was hooked through and through.",
+    name: "Deepika Rajagopalan",
+    role: "Vice President of Data Science & AI, Ideassion Technology Solutions",
+    avatar: "https://via.placeholder.com/48",
+  },
+  {
+    id: 2,
+    text: "From the lighting to the layout! It was an experience.",
+    name: "Yousuf",
+    role: "AI & Cybersecurity",
+    avatar: "https://via.placeholder.com/48",
+  },
+  {
+    id: 3,
+    text: "We wanted to break away from the typical conference vibe, and The Launchpod delivered. Our event felt alive and original.",
+    name: "Dinesh Kumar",
+    role: "Head of Creatives, Crux Creations",
+    avatar: "https://via.placeholder.com/48",
+  },
+  {
+    id: 4,
+    text: "The space pulls you in! It's interactive, unexpected, and full of energy. I left with new ideas and new connections.",
+    name: "Sarah Sheriff",
+    role: "Meet & Greet: Healthcare meets Healthtech",
+    avatar: "https://via.placeholder.com/48",
+  },
+  {
+    id: 5,
+    text: "Hosting at The Launchpod set a new standard for us. It’s where ideas launch — literally and creatively.",
+    name: "Gugapriya O",
+    role: "Managing Director, IITT",
+    avatar: "https://via.placeholder.com/48",
+  },
+];
+
 
   const stats = [
     { number: '100', label: 'Lorem ipsum' },
@@ -99,7 +114,7 @@ const TestimonialSection: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full rounded-3xl p-6 sm:p-12 overflow-hidden sm:overflow-visible px-4 sm:px-[50px]" ref={ref}>
+    <div id="testimonials" className="relative w-full rounded-3xl p-6 sm:p-12 overflow-hidden sm:overflow-visible px-4 sm:px-[50px]" ref={ref}>
       {/* Background Video */}
       <video
         autoPlay

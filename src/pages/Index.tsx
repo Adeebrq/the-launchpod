@@ -26,8 +26,20 @@ const Index = () => {
   };
 
   const handleNavigationClick = (section: string) => {
-    toast.info(`Navigating to ${section}`);
-    console.log(`Navigation clicked: ${section}`);
+    const sectionId = section.toLowerCase();
+    const element = document.getElementById(sectionId);
+    
+    if (element) {
+      // Use scrollIntoView with smooth behavior
+      // CSS scroll-margin-top handles the header offset
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      console.warn(`Section with id "${sectionId}" not found`);
+      toast.info(`Navigating to ${section}`);
+    }
   };
 
   const handleKeywordSearch = (keyword: string) => {

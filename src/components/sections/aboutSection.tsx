@@ -1,11 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Zap, MapPin, Sliders } from 'lucide-react';
 import { KeywordButton } from '../KeywordButton';
-
-
-// Decorative asset imports removed (not present in project)
-
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -13,9 +9,8 @@ interface FeatureProps {
   description: string;
 }
 
-
 // Animation configuration
-const fadeInUpVariants = {
+const fadeInUpVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: 50,
@@ -32,9 +27,8 @@ const fadeInUpVariants = {
   }
 };
 
-
 // Stagger container variant for cascading animations
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -45,20 +39,18 @@ const staggerContainer = {
   }
 };
 
-
 // Animation function with viewport configuration
 const animateOnView = (delay = 0) => ({
-  initial: "hidden",
-  whileInView: "visible",
+  initial: "hidden" as const,
+  whileInView: "visible" as const,
   viewport: { once: false, margin: "-100px" },
   variants: fadeInUpVariants,
   transition: { delay }
 });
 
-
 const AboutSection: React.FC = () => {
   return (
-    <section className="relative overflow-hidden px-[50px]">
+    <section id="about" className="relative overflow-hidden px-[50px]">
       {/* Animated Background Elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -72,10 +64,6 @@ const AboutSection: React.FC = () => {
         transition={{ duration: 1.5, delay: 0.2 }}
         className="absolute top-40 right-32 w-64 h-64 bg-blue-300/20 rounded-full blur-2xl"
       />
-
-
-      {/* Decorative SVG Backgrounds removed to avoid missing asset errors */}
-
 
       <div className="container mx-auto px-6 py-6">
         {/* Header Section */}
@@ -119,11 +107,11 @@ const AboutSection: React.FC = () => {
             <motion.div variants={fadeInUpVariants}>
               <KeywordButton
                 keyword="Experience Now"
+            animationDistance='160px'
                 className="mb-[33px] max-sm:mb-5"
               />
             </motion.div>
           </motion.div>
-
 
           {/* Right Image */}
           <motion.div 
@@ -139,7 +127,6 @@ const AboutSection: React.FC = () => {
             />
           </motion.div>
         </div>
-
 
         {/* Stats Section */}
         <motion.div 
@@ -169,7 +156,6 @@ const AboutSection: React.FC = () => {
             </div>
           </motion.div>
 
-
           {/* Stats */}
           {[
             { value: '100', label: 'Corporate Events Hosted' },
@@ -186,7 +172,6 @@ const AboutSection: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-
 
         {/* Features Section */}
         <motion.div 
@@ -233,6 +218,5 @@ const AboutSection: React.FC = () => {
     </section>
   );
 };
-
 
 export default AboutSection;

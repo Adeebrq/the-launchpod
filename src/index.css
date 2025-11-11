@@ -112,6 +112,19 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
     font-family: 'NeueRegrade', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   }
+
+  /* Smooth scroll behavior for navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Add scroll margin to sections for sticky header offset */
+  section[id],
+  main[id],
+  div[id="testimonials"],
+  div[id="past-events"] {
+    scroll-margin-top: 100px;
+  }
 }
 
 /* Disable horizontal scrolling on mobile */

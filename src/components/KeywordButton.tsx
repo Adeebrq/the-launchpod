@@ -1,27 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface KeywordButtonProps {
   keyword: string;
   onClick?: () => void;
   className?: string;
+  animationDistance?: string; // e.g., "calc(100%+60px)", "120px", "150px"
 }
 
 export const KeywordButton: React.FC<KeywordButtonProps> = ({
   keyword,
   onClick,
-  className = ''
+  className = '',
+  animationDistance = 'calc(100%+60px)'
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const handleClick = () => {
+    setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 800);
+    onClick?.();
+  };
+
   return (
     <div className={`h-10 shrink-0 rounded-[30px] w-fit ${className}`}>
       <button
-        onClick={onClick}
-        className="flex h-10 justify-center items-center gap-9 shrink-0 bg-[#001039] pl-[15px] pr-1 py-[5px] rounded-[30px] transition-all duration-200 hover:bg-[#002055] active:scale-95"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleClick}
+        className="relative flex h-10 justify-center items-center gap-9 shrink-0 bg-[#001039] pl-[15px] pr-1 py-[5px] rounded-[30px] transition-all duration-200 hover:bg-[#002055] active:scale-95 overflow-hidden"
         aria-label={`Search for ${keyword}`}
       >
-        <span className="text-white text-[15px] font-normal capitalize whitespace-nowrap">
+        <span
+          className="text-white text-[15px] font-normal capitalize whitespace-nowrap transition-transform duration-700"
+          style={{
+            transform: isAnimating ? `translateX(52px)` : 'translateX(0)'
+          }}
+        >
           {keyword}
         </span>
-        <div className="flex w-9 h-9 justify-center items-center shrink-0 bg-[#BDD8E9] px-2.5 py-[10.5px] rounded-[18px] transition-all duration-200 hover:bg-[#A5C9E1]">
+        <div
+          className="flex w-9 h-9 justify-center items-center shrink-0 bg-[#BDD8E9] px-2.5 py-[10.5px] rounded-[18px] transition-all duration-700 hover:bg-[#A5C9E1]"
+          style={{
+            transform: isAnimating 
+              ? `translateX(-${animationDistance})` 
+              : isHovered && !isAnimating 
+              ? 'rotate(12deg)' 
+              : 'rotate(0deg)'
+          }}
+        >
           <div className="flex w-4 h-[15px] justify-center items-center shrink-0">
             <div className="flex w-4 h-[15px] justify-center items-center shrink-0">
               <div
@@ -37,3 +64,46 @@ export const KeywordButton: React.FC<KeywordButtonProps> = ({
     </div>
   );
 };
+
+// Demo component
+export default function Demo() {
+  return (
+    <div className="flex flex-col gap-6 p-8 bg-gray-100 min-h-screen">
+      <h1 className="text-2xl font-bold text-gray-800">Keyword Button with Dynamic Animation</h1>
+      
+      <div className="flex flex-col gap-4">
+        <div>
+          <p className="text-sm text-gray-600 mb-2">Default: calc(100%+60px)</p>
+          <KeywordButton keyword="Search" onClick={() => console.log('Clicked!')} />
+        </div>
+        
+        <div>
+          <p className="text-sm text-gray-600 mb-2">Custom: calc(100%+80px)</p>
+          <KeywordButton 
+            keyword="Explore" 
+            animationDistance="calc(100%+80px)"
+            onClick={() => console.log('Clicked!')} 
+          />
+        </div>
+        
+        <div>
+          <p className="text-sm text-gray-600 mb-2">Custom: 120px</p>
+          <KeywordButton 
+            keyword="Discover" 
+            animationDistance="120px"
+            onClick={() => console.log('Clicked!')} 
+          />
+        </div>
+        
+        <div>
+          <p className="text-sm text-gray-600 mb-2">Custom: calc(100%+40px)</p>
+          <KeywordButton 
+            keyword="Adventure" 
+            animationDistance="calc(100%+40px)"
+            onClick={() => console.log('Clicked!')} 
+          />
+        </div>
+      </div>
+    </div>
+  );
+}

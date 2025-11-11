@@ -2,6 +2,16 @@ import React from 'react';
 import { Instagram, Facebook, Youtube, Phone, Mail, MapPin } from 'lucide-react';
 import BgVideo from "../../assets/bgVideo.mp4"
 
+// Scroll navigation helper function
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+};
 
 const Footer = () => {
   return (
@@ -83,10 +93,30 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6 uppercase tracking-wide">Quick Links</h3>
             <nav className="space-y-3">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors block">Upcoming Events</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors block">About Us</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors block">Past Events</a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors block">Testimonials</a>
+              <button 
+                onClick={() => scrollToSection('events')}
+                className="text-gray-400 hover:text-white transition-colors block text-left w-full"
+              >
+                Upcoming Events
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-400 hover:text-white transition-colors block text-left w-full"
+              >
+                About Us
+              </button>
+              <button 
+                onClick={() => scrollToSection('past-events')}
+                className="text-gray-400 hover:text-white transition-colors block text-left w-full"
+              >
+                Past Events
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className="text-gray-400 hover:text-white transition-colors block text-left w-full"
+              >
+                Testimonials
+              </button>
             </nav>
           </div>
 

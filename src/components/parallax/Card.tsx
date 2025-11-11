@@ -77,12 +77,12 @@ export default function Card({
           </div>
 
           {/* Title */}
-          <h1 className="text-[28px] sm:text-[48px] font-bold text-slate-900 leading-tight m-0">
+          <h1 className="text-[28px] sm:text-[48px] font-bold text-white leading-tight m-0">
             {title}
           </h1>
 
           {/* Description */}
-          <p className="text-slate-700 text-[15px] sm:text-[16px] leading-relaxed m-0">
+          <p className=" text-white text-[15px] sm:text-[16px] leading-relaxed m-0">
             {description}
           </p>
 
@@ -98,8 +98,8 @@ export default function Card({
                   <path d="M3 10H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-slate-700 text-xs sm:text-sm font-medium">Date</span>
-              <span className="text-slate-900 font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{date}</span>
+              <span className=" text-white text-xs sm:text-sm font-medium">Date</span>
+              <span className=" text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{date}</span>
             </div>
 
             {/* Time */}
@@ -110,8 +110,8 @@ export default function Card({
                   <path d="M12 7V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-slate-700 text-xs sm:text-sm font-medium">Time</span>
-              <span className="text-slate-900 font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{time}</span>
+              <span className=" text-white text-xs sm:text-sm font-medium">Time</span>
+              <span className=" text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{time}</span>
             </div>
 
             {/* Capacity */}
@@ -124,8 +124,8 @@ export default function Card({
                   <path d="M10 20C10 20 10 16 16 16C22 16 22 20 22 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-slate-700 text-xs sm:text-sm font-medium">Capacity</span>
-              <span className="text-slate-900 font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
+              <span className=" text-white text-xs sm:text-sm font-medium">Capacity</span>
+              <span className="text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
             </div>
           </div>
         </div>

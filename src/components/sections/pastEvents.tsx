@@ -55,6 +55,7 @@ const CircularGallerySection = () => {
 
   return (
     <div 
+      id="past-events"
       ref={sectionRef}
       className="relative w-full"
     >

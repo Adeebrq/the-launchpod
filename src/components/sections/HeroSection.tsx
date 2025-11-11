@@ -93,6 +93,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <motion.div variants={fadeInUpVariants}>
           <KeywordButton 
             keyword="Launch"
+            animationDistance='100px'
             onClick={handleKeywordClick}
             className="mb-5 md:mb-[33px]"
           />
