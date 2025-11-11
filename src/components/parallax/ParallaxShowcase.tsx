@@ -1,8 +1,38 @@
 import React, { useRef } from 'react';
-import { useScroll } from 'framer-motion';
+import { useScroll, motion, Variants } from 'framer-motion';
 import Card from './Card';
 import { projects } from './data';
 import bgVideo from "../../assets/bgVideo.mp4"
+
+// Animation configuration
+const fadeInUpVariants: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 50,
+    scale: 0.95
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
+
+// Stagger container variant for cascading animations
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3
+    }
+  }
+};
 
 export default function ParallaxShowcase() {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -13,17 +43,59 @@ export default function ParallaxShowcase() {
 
   return (
     <main id="events" ref={containerRef as any} className="min-h-[100vh] w-full justify-center items-center py-[5vh] px-4 sm:px-[50px] scrollbar-hide">
-      <div className='p-4 sm:p-10 pb-0'>
-        <p className="bg-gradient-to-r from-gray-600 to-gray-900 bg-clip-text text-transparent py-2">
-          Upcoming events
-        </p>
-        <h3 className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent py-2 text-3xl sm:text-5xl">
-          What's Happening at The Launchpod
-        </h3>
-        <p className="bg-gradient-to-r from-gray-600 to-black bg-clip-text text-transparent py-2">
-          Explore upcoming networking events, and industry crossovers. 
-          Connect with innovators, investors, <br/> and industry leaders shaping the future of Chennai's ecosystem.
-        </p>
+      {/* Header Section with Animations */}
+      <div className="relative overflow-hidden w-full mb-8 sm:mb-12 px-4 sm:px-8">
+        {/* Animated Background Elements */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-20 right-0 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.2 }}
+          className="absolute top-40 right-32 w-64 h-64 bg-blue-300/10 rounded-full blur-2xl"
+        />
+
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          className="relative z-10"
+        >
+          <motion.p 
+            variants={fadeInUpVariants}
+            className="text-blue-300 text-sm font-medium mb-4 tracking-wide"
+          >
+            Upcoming Events
+          </motion.p>
+          
+          {/* Heading with Left Separator */}
+          <div className="flex gap-4 items-start mb-6">
+            <motion.div 
+              variants={fadeInUpVariants}
+              className="w-2 h-[90px] max-lg:h-[120px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-full"
+            />
+            <motion.h1 
+              variants={fadeInUpVariants}
+              className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight max-w-4xl"
+            >
+              What's Happening at
+              <br/>The Launchpod
+            </motion.h1>
+          </div>
+          
+          <motion.p 
+            variants={fadeInUpVariants}
+            className="text-slate-600 text-lg mb-8 leading-relaxed max-w-4xl"
+          >
+            Explore upcoming networking events, and industry crossovers. 
+            Connect with innovators, investors, and industry leaders shaping the future of Chennai's ecosystem.
+          </motion.p>
+        </motion.div>
       </div>
 
       {/* Desktop/Tablet: Parallax with sticky video */}

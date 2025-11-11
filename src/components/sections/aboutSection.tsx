@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Zap, MapPin, Sliders } from 'lucide-react';
+
 import { KeywordButton } from '../KeywordButton';
+import image from "../../assets/aboutUs.png"
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -50,24 +52,24 @@ const animateOnView = (delay = 0) => ({
 
 const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="relative overflow-hidden px-[50px]">
+    <section id="about" className="relative overflow-hidden px-3 sm:px-5 md:px-[50px]">
       {/* Animated Background Elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute top-20 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"
+        className="absolute top-20 right-0 lg:right-0 max-lg:right-[-50px] w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="absolute top-40 right-32 w-64 h-64 bg-blue-300/20 rounded-full blur-2xl"
+        className="absolute top-40 right-32 lg:right-32 max-lg:right-[-20px] w-64 h-64 bg-blue-300/20 rounded-full blur-2xl"
       />
 
-      <div className="container mx-auto px-6 py-6">
+      <div className="w-full max-w-[1340px] mx-auto">
         {/* Header Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 max-lg:gap-6 items-center mb-10 lg:mb-10 max-lg:mb-6">
           {/* Left Content - Staggered Animation */}
           <motion.div 
             variants={staggerContainer}
@@ -86,11 +88,11 @@ const AboutSection: React.FC = () => {
             <div className="flex gap-4 items-start mb-6">
               <motion.div 
                 variants={fadeInUpVariants}
-                className="w-2 h-[120px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]"
+                className="w-2 h-[120px] max-lg:h-[250px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px] -z-50"
               />
               <motion.h1 
                 variants={fadeInUpVariants}
-                className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight"
+                className="text-5xl lg:text-6xl font-bold text-slate-900 leading-tight z-10"
               >
                 Where Innovation Meets Opportunity
               </motion.h1>
@@ -98,7 +100,7 @@ const AboutSection: React.FC = () => {
             
             <motion.p 
               variants={fadeInUpVariants}
-              className="text-slate-600 text-lg mb-8 leading-relaxed"
+              className="text-slate-600 text-lg mb-8 leading-relaxed  z-20"
             >
               Designed by Offisbay, The Launchpod redefines how ideas are shared and scaled. 
               With flexible spacing and seating, world-class amenities, and a future-ready ambiance, 
@@ -107,45 +109,102 @@ const AboutSection: React.FC = () => {
             <motion.div variants={fadeInUpVariants}>
               <KeywordButton
                 keyword="Experience Now"
-            animationDistance='160px'
+                animationDistance='160px'
                 className="mb-[33px] max-sm:mb-5"
               />
             </motion.div>
+
+            {/* Stats Section - Hidden on mobile, shown on desktop */}
+            <motion.div 
+              variants={staggerContainer}
+              className="grid grid-cols-3 grid-rows-2 gap-0 max-w-3xl max-lg:hidden"
+            >
+              {/* First Row - Circles only */}
+              <motion.div 
+                variants={fadeInUpVariants}
+                className="flex justify-start items-start col-span-3 "
+              >
+                <div className="flex gap-0">
+                  {[
+                    'w-10 h-10 bg-blue-200/70 rounded-full -mr-4',
+                    'w-10 h-10 bg-slate-700/70 rounded-full -mr-4',
+                    'w-10 h-10 bg-blue-200/70 rounded-full'
+                  ].map((className, idx) => (
+                    <motion.div 
+                      key={idx}
+                      variants={fadeInUpVariants}
+                      className={className}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* Stats */}
+              {[
+                { value: '100', label: 'Corporate Events Hosted' },
+                { value: '100', label: 'Industry Collaborations' },
+                { value: '100', label: 'Professionals Connected' }
+              ].map((stat, idx) => (
+                <motion.div 
+                  key={idx}
+                  variants={fadeInUpVariants}
+                  className="text-start mx-1 -mt-2"
+                >
+                  <h3 className="text-3xl font-bold text-slate-900 mb-2">{stat.value}</h3>
+                  <p className="text-slate-600">{stat.label}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* Right Image */}
+          {/* Right Side - Image */}
           <motion.div 
             {...animateOnView()}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-200/40 to-transparent rounded-full blur-3xl"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop" 
-              alt="Modern Architecture" 
-              className="relative rounded-2xl shadow-2xl w-full object-cover"
-              style={{ transform: 'translateY(0)' }}
-            />
+            <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
+           <motion.div 
+  {...animateOnView()}
+ animate={{
+  scale: [1, 1.01, 1]
+}}
+transition={{
+  duration: 4,
+  repeat: Infinity,
+  ease: "easeInOut"
+}}
+  className="relative"
+>
+  <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
+  <img 
+    src={image}
+    alt="Modern Architecture" 
+    className="relative w-full h-96 lg:h-96 max-lg:h-[500px] object-contain"
+    style={{ transform: 'translateY(0)' }}
+  />
+</motion.div>
+
           </motion.div>
         </div>
 
-        {/* Stats Section */}
+        {/* Stats Section - Mobile Only, shown below image */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
-          className="grid grid-cols-3 grid-rows-2 gap-8 mb-10 max-w-3xl"
+          className="grid grid-cols-3 grid-rows-2 gap-0 max-w-3xl lg:hidden mb-10 max-lg:mb-6"
         >
           {/* First Row - Circles only */}
           <motion.div 
             variants={fadeInUpVariants}
-            className="flex justify-start items-start col-span-3"
+            className="flex justify-start items-start col-span-3 "
           >
             <div className="flex gap-0">
               {[
-                'w-12 h-12 bg-blue-200/70 rounded-full -mr-4',
-                'w-12 h-12 bg-slate-700/70 rounded-full -mr-4',
-                'w-12 h-12 bg-blue-200/70 rounded-full'
+                'w-10 h-10 bg-blue-200/70 rounded-full -mr-4',
+                'w-10 h-10 bg-slate-700/70 rounded-full -mr-4',
+                'w-10 h-10 bg-blue-200/70 rounded-full'
               ].map((className, idx) => (
                 <motion.div 
                   key={idx}
@@ -165,7 +224,7 @@ const AboutSection: React.FC = () => {
             <motion.div 
               key={idx}
               variants={fadeInUpVariants}
-              className="text-start"
+              className="text-start mx-1 -mt-4"
             >
               <h3 className="text-3xl font-bold text-slate-900 mb-2">{stat.value}</h3>
               <p className="text-slate-600">{stat.label}</p>

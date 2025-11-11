@@ -88,13 +88,13 @@ export default function FAQSection() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute top-20 right-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"
+        className="absolute top-20 right-0 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl"
       />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.5, delay: 0.2 }}
-        className="absolute top-40 right-32 w-64 h-64 bg-blue-300/20 rounded-full blur-2xl"
+        className="absolute top-40 right-32 w-64 h-64 bg-blue-300/10 rounded-full blur-2xl"
       />
 
       {/* Full Width Header Section */}
@@ -116,7 +116,7 @@ export default function FAQSection() {
         <div className="flex gap-4 items-start mb-6 px-4 md:px-8">
           <motion.div 
             variants={fadeInUpVariants}
-            className="w-2 h-[120px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]"
+            className="w-2 h-[120px] max-lg:h-[175px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]"
           />
           <motion.h1 
             variants={fadeInUpVariants}
@@ -126,15 +126,16 @@ export default function FAQSection() {
           </motion.h1>
         </div>
         
-        <motion.p 
-          variants={fadeInUpVariants}
-          className="text-slate-600 text-lg mb-8 leading-relaxed px-4 md:px-8 max-w-4xl"
-        >
-          If you don't find what you need, please contact us at{' '}
-          <a href="mailto:support@example.com" className="text-blue-500 font-medium">
-            support@example.com
-          </a>
-        </motion.p>
+       <motion.p 
+  variants={fadeInUpVariants}
+  className="text-slate-600 text-lg mb-8 leading-relaxed px-4 md:px-8 max-w-4xl"
+>
+  If you don't find what you need, please contact us at{' '}
+  <a href="mailto:info@launchpod.com" className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-900 transition-colors">
+    <span>info@launchpod.com</span>
+  </a>
+</motion.p>
+
       </motion.div>
 
       {/* FAQ Grid */}

@@ -49,7 +49,7 @@ const Footer = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-gray-700">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-gray-700">
           
           {/* Brand Section */}
           <div className="md:col-span-1">
@@ -60,11 +60,7 @@ const Footer = () => {
 />
 
             <p className="text-gray-400 text-sm leading-relaxed mb-6 mt-4">
-              Lorem ipsum dolor Lorem ipsum dolor sit amet consecteturaruii.Lorem
-              <br />
-              Lorem ipsum dolor Lorem ipsum dolor sit amet consecteturaruii.Lorem
-              <br />
-              ipsum dolor.Lorem
+              The Launchpod Where Ideas Take Off
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
@@ -121,7 +117,7 @@ const Footer = () => {
           </div>
 
           {/* Our Services */}
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold mb-6 uppercase tracking-wide">Our Services</h3>
             <nav className="space-y-3">
               <a  className="text-gray-400 hover:text-white transition-colors block">Corporate Events</a>
@@ -131,7 +127,7 @@ const Footer = () => {
               <a  className="text-gray-400 hover:text-white transition-colors block">Networking Events</a>
               <a  className="text-gray-400 hover:text-white transition-colors block">Webinars</a>
             </nav>
-          </div>
+          </div> */}
 
           {/* Contact Us */}
           <div>
@@ -139,7 +135,9 @@ const Footer = () => {
             <div className="space-y-4">
               <a href="tel:9087654321" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Phone size={20} />
-                <span>9087654321</span>
+                <span>+91 9363049029
+                  <br/>
+                  +91 7708086301</span>
               </a>
               <a href="mailto:info@launchpod.com" className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors">
                 <Mail size={20} />

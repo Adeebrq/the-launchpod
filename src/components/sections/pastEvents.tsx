@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import CircularGallery from "../CircularGallery";
+import EventCardsCarousel from "./cardsGrid";
 
 const fadeInUpVariants = {
   hidden: {
@@ -30,8 +31,21 @@ const containerVariants = {
 
 const CircularGallerySection = () => {
   const [isInView, setIsInView] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,41 +105,54 @@ const CircularGallerySection = () => {
         </div>
       </motion.div>
 
-      {/* Circular Gallery Section */}
+      {/* Gallery Section - Conditional Rendering */}
       <div 
-        className="relative min-h-[80vh] md:min-h-screen w-full px-4 md:px-[50px]"
+        className="relative  md:min-h-screen w-full px-4 md:px-[50px]"
       >
-        {/* Background Effects */}
-        <div className="absolute inset-0 opacity-50">
-          <div 
-            className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent transition-opacity duration-1000 ${
-              isInView ? 'opacity-100' : 'opacity-0'
-            }`} 
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/30 via-transparent to-transparent animate-pulse" />
-        </div>
-        
-        {/* Circular Gallery with Animation */}
-        <div className={`relative z-10 h-[60vh] md:h-screen transition-opacity duration-1000 ${
-          isInView ? 'opacity-100' : 'opacity-0'
-        }`}>
-          <CircularGallery
-            bend={3}
-            textColor="#ffffff"
-            borderRadius={0.05}
-            scrollEase={0.05}
-          />
-        </div>
-
-
-        {/* Scroll Indicator */}
-        <div className="hidden md:block absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="animate-bounce">
-            <svg className="w-6 h-6 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
+        {/* Background Effects - Only for desktop CircularGallery */}
+        {!isMobile && (
+          <div className="absolute inset-0 opacity-50">
+            <div 
+              className={`absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent transition-opacity duration-1000 ${
+                isInView ? 'opacity-100' : 'opacity-0'
+              }`} 
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/30 via-transparent to-transparent animate-pulse" />
           </div>
-        </div>
+        )}
+        
+        {/* Conditional Gallery Rendering */}
+        {isMobile ? (
+          // Mobile: EventCardsCarousel
+          <div className={`relative z-10 transition-opacity duration-1000 ${
+            isInView ? 'opacity-100' : 'opacity-0'
+          }`}>
+            <EventCardsCarousel />
+          </div>
+        ) : (
+          // Desktop: CircularGallery
+          <div className={`relative z-10 h-screen transition-opacity duration-1000 ${
+            isInView ? 'opacity-100' : 'opacity-0'
+          }`}>
+            <CircularGallery
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.05}
+            />
+          </div>
+        )}
+
+        {/* Scroll Indicator - Only on desktop */}
+        {!isMobile && (
+          <div className="hidden md:block absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="animate-bounce">
+              <svg className="w-6 h-6 text-white/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

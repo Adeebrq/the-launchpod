@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 
+
 type CardProps = {
   i: number;
   title: string;
@@ -17,6 +18,7 @@ type CardProps = {
   targetScale: number;
   isMobile?: boolean;
 };
+
 
 export default function Card({ 
   i, 
@@ -36,9 +38,6 @@ export default function Card({
 }: CardProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Off-white radial gradient with blue & black accents
-  const radialGradient = 'radial-gradient(ellipse at 50% 20%, #d8e9f8 0%, #cfe3f0 10%, #c5dced 20%, #b4c0d2 30%, #6b7a8a 60%, #505a6a 70%, #1e2437 85%, #0c0e16 100%)';
-
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -47,12 +46,13 @@ export default function Card({
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const cardScale = useTransform(progress, range, [1, targetScale]);
 
+
   return (
-    <div ref={containerRef} className={isMobile ? "w-full flex items-center justify-center py-4" : "h-screen flex items-center justify-center sticky top-0"}>
+    <div ref={containerRef} className={isMobile ? "w-fullflex items-center justify-center py-4" : "h-screen flex items-center justify-center sticky top-0"}>
       <motion.div
-        className="relative w-full sm:w-[1200px] max-w-[92vw] h-auto sm:h-[600px] border border-white/20 rounded-[25px] p-6 sm:p-[60px] flex flex-col sm:flex-row items-center gap-6 sm:gap-[80px]"
+        className="relative w-full sm:w-[1200px] max-w-[92vw]  border border-gray-400  h-auto sm:h-[600px]  rounded-[25px] p-6 sm:p-[60px] flex flex-col sm:flex-row items-center gap-6 sm:gap-[80px]"
         style={{ 
-          backgroundImage: radialGradient,
+          backgroundColor: 'white',
           scale: (isMobile ? 1 : (cardScale as unknown as number)) as any,
           top: isMobile ? undefined : `calc(-5vh + ${i * 25}px)` 
         }}
@@ -67,6 +67,7 @@ export default function Card({
           <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/40 rounded-[20px]" />
         </div>
 
+
         {/* Right Side - Content */}
         <div className="w-full sm:w-[55%] flex flex-col justify-center gap-[20px] sm:gap-[30px]">
           {/* Tag */}
@@ -76,15 +77,18 @@ export default function Card({
             </span>
           </div>
 
+
           {/* Title */}
-          <h1 className="text-[28px] sm:text-[48px] font-bold text-white leading-tight m-0">
+          <h1 className="text-[28px] sm:text-[48px] font-bold text-black leading-tight m-0">
             {title}
           </h1>
 
+
           {/* Description */}
-          <p className=" text-white text-[15px] sm:text-[16px] leading-relaxed m-0">
+          <p className="text-black text-[15px] sm:text-[16px] leading-relaxed m-0">
             {description}
           </p>
+
 
           {/* Info Grid */}
           <div className="grid grid-cols-3 gap-2 sm:gap-[30px] mt-3 sm:mt-[20px]">
@@ -98,9 +102,10 @@ export default function Card({
                   <path d="M3 10H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className=" text-white text-xs sm:text-sm font-medium">Date</span>
-              <span className=" text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{date}</span>
+              <span className="text-black text-xs sm:text-sm font-medium">Date</span>
+              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{date}</span>
             </div>
+
 
             {/* Time */}
             <div className="flex flex-col items-center sm:items-start gap-2 sm:gap-[12px]">
@@ -110,9 +115,10 @@ export default function Card({
                   <path d="M12 7V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className=" text-white text-xs sm:text-sm font-medium">Time</span>
-              <span className=" text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{time}</span>
+              <span className="text-black text-xs sm:text-sm font-medium">Time</span>
+              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{time}</span>
             </div>
+
 
             {/* Capacity */}
             <div className="flex flex-col items-center sm:items-start gap-2 sm:gap-[12px]">
@@ -124,8 +130,8 @@ export default function Card({
                   <path d="M10 20C10 20 10 16 16 16C22 16 22 20 22 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className=" text-white text-xs sm:text-sm font-medium">Capacity</span>
-              <span className="text-white font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
+              <span className="text-black text-xs sm:text-sm font-medium">Capacity</span>
+              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
             </div>
           </div>
         </div>

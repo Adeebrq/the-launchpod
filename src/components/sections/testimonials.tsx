@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import BgVideo from "../../assets/bgVideo.mp4"
+import { User } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -195,7 +196,7 @@ const testimonials = [
             {/* Avatar and Info - Fixed at bottom */}
             <motion.div variants={itemVariants} className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
-                <span className="text-gray-500 text-xs">Avatar</span>
+                    <User size={20} className="text-gray-600" />
               </div>
               <div>
                 <p className="font-semibold text-gray-900">{current.name}</p>

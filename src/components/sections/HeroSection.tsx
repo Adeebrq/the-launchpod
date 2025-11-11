@@ -7,14 +7,17 @@ import ig from "../../assets/instagram.svg"
 import ScrollingBanner from '../scroll';
 import background from "../../assets/bgbgbg.jpg"
 
+
 interface HeroSectionProps {
   onKeywordSearch?: (keyword: string) => void;
 }
+
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onKeywordSearch
 }) => {
   const [currentKeyword] = useState('Keyword');
+
 
   const fadeInUpVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
@@ -26,6 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   };
 
+
   const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,10 +38,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   };
 
+
   const handleKeywordClick = () => {
     onKeywordSearch?.(currentKeyword);
     console.log(`Searching for: ${currentKeyword}`);
   };
+
 
   const handleSocialClick = (platform: string) => {
     const urls = {
@@ -48,10 +54,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     window.open(urls[platform as keyof typeof urls], '_blank');
   };
 
+
   return (
 <section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px]">
       {/* Social Media Icons */}
-      <div className="md:absolute md:right-0 md:top-14 flex flex-row md:flex-col gap-3 z-10 justify-end mb-5 md:mb-0">
+      <div className="absolute right-3 top-0 md:right-0 md:top-14 flex flex-col gap-3 z-10">
         <button
           onClick={() => handleSocialClick('instagram')}
           className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
@@ -74,6 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <img src={yt} alt="YouTube" className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </div>
+
 
       <motion.div
         variants={staggerContainer}
@@ -105,7 +113,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           <div className="w-1 h-auto md:h-[150px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
           <div className="flex-1">
-            <ul className="w-full text-[#0B2549] text-sm sm:text-base md:text-lg font-normal list-none space-y-1">
+            <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-1">
               <li>Located in the business heart of Mount Road, Chennai.</li>
               <li>From investor pitch meetings and product launches to strategic networking sessions,</li>
               <li>This is where professionals, entrepreneurs, and visionaries connect to create impact.</li>

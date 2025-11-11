@@ -15,7 +15,7 @@ const bannerItems = [
 
 const ScrollingBanner: React.FC = () => {
   return (
-    <section className="w-full h-16 relative flex items-center overflow-hidden py-8 mt-3">
+<section className="w-full h-5 sm:h-16 relative flex items-center overflow-hidden py-8 mt-3">
       {/* Video Background */}
       <video
         autoPlay

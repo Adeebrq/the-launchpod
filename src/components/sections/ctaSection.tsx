@@ -103,7 +103,7 @@ export default function GetInTouchSection() {
             }}
           >
             <KeywordButton
-              animationDistance='185px'
+              animationDistance='165px'
               keyword="Request a Quote"
             />
           </motion.div>
