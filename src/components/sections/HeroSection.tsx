@@ -6,6 +6,7 @@ import fb from "../../assets/facebook.svg"
 import ig from "../../assets/instagram.svg"
 import ScrollingBanner from '../scroll';
 import background from "../../assets/bgbgbg.jpg"
+import hero from "/LaunchpodHero.webp"
 
 
 interface HeroSectionProps {
@@ -137,9 +138,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           
           {/* Main foreground image */}
           <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/214944fce293bf1601b1e784a94c047650bea660?width=2278"
+            src={hero}
             alt="Modern glass house architectural design showcasing contemporary building techniques"
-            className="w-full h-[180px] sm:h-[200px] md:h-[250px] lg:h-[336px] shrink-0 rounded-[5px] object-cover relative z-10"
+            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover relative z-10 lg:-translate-x-3"
             loading="lazy"
           />
         </motion.div>
