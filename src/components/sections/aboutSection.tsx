@@ -4,6 +4,8 @@ import { Zap, MapPin, Sliders } from 'lucide-react';
 
 import { KeywordButton } from '../KeywordButton';
 import image from "../../assets/aboutUs.png"
+import about1 from "/about1.png"
+
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -52,7 +54,7 @@ const animateOnView = (delay = 0) => ({
 
 const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="relative overflow-hidden px-3 sm:px-5 md:px-[50px]">
+    <section id="about" className="relative overflow-hidden w-full max-w-[1340px] px-3 sm:px-5 md:px-[50px]">
       {/* Animated Background Elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -67,9 +69,9 @@ const AboutSection: React.FC = () => {
         className="absolute top-40 right-32 lg:right-32 max-lg:right-[-20px] w-64 h-64 bg-blue-300/20 rounded-full blur-2xl"
       />
 
-      <div className="w-full max-w-[1340px] mx-auto">
+      <div className="w-full">
         {/* Header Section */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-12 max-lg:gap-6 items-center mb-10 lg:mb-10 max-lg:mb-6">
+        <div className="grid lg:grid-cols-2  lg:gap-12 max-lg:gap-6 items-center mb-10 lg:mb-10 max-lg:mb-6">
           {/* Left Content - Staggered Animation */}
           <motion.div 
             variants={staggerContainer}
@@ -164,25 +166,32 @@ const AboutSection: React.FC = () => {
           >
             <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
            <motion.div 
-  {...animateOnView()}
- animate={{
-  scale: [1, 1.01, 1]
-}}
-transition={{
-  duration: 4,
-  repeat: Infinity,
-  ease: "easeInOut"
-}}
+  initial={{ x: 100, opacity: 0 }}
+  whileInView={{ 
+    x: 0, 
+    opacity: 1,
+    scale: [1, 1.01, 1]
+  }}
+  viewport={{ once: false, amount: 0.3 }}
+  transition={{
+    x: { duration: 0.8, ease: "easeOut" },
+    opacity: { duration: 0.8, ease: "easeOut" },
+    scale: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }}
   className="relative"
 >
   <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
   <img 
-    src={image}
+    src={about1}
     alt="Modern Architecture" 
-    className="relative w-full h-96 lg:h-96 max-lg:h-[500px] object-contain"
-    style={{ transform: 'translateY(0)' }}
+    className="relative w-full h-96 lg:h-[500px] object-contain ml-auto"
   />
 </motion.div>
+
 
           </motion.div>
         </div>

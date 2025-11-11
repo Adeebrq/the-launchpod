@@ -3,20 +3,16 @@ import { motion, Variants } from 'framer-motion';
 import { Instagram, Linkedin } from 'lucide-react';
 import { KeywordButton } from '../KeywordButton';
 import ScrollingBanner from '../scroll';
-import background from "../../assets/bgbgbg.jpg"
-import hero from "/LaunchpodHero.webp"
-
+import heroBG1 from "/heroBG1.png"
 
 interface HeroSectionProps {
   onKeywordSearch?: (keyword: string) => void;
 }
 
-
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onKeywordSearch
 }) => {
   const [currentKeyword] = useState('Keyword');
-
 
   const fadeInUpVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
@@ -28,7 +24,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   };
 
-
   const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,15 +32,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   };
 
+  // Animation for sliding in from bottom to top
+  const slideUpVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 100
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1],
+        repeat: 0
+      }
+    }
+  };
 
   const handleKeywordClick = () => {
     onKeywordSearch?.(currentKeyword);
     console.log(`Searching for: ${currentKeyword}`);
   };
 
-
   return (
-<section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px]">
+    <section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px]">
       {/* Social Media Icons */}
       <div className="absolute right-3 top-0 md:right-0 md:top-14 flex flex-col gap-3 z-10">
         <a
@@ -68,17 +78,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </a>
       </div>
 
-
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="w-full max-w-[1240px]"
+        className="w-full max-w-[1240px] lg:-translate-y-14"
       >
         <motion.h1
           variants={fadeInUpVariants}
-          className="w-full text-[#0B2549] text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight sm:leading-[50px] md:leading-[71px] mb-4 sm:mb-[15px] md:mb-[19px]"
+          className="w-full text-[#0B2549] text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight sm:leading-[50px] md:leading-[71px] mb-0 sm:mb-[15px] md:mb-[19px]"
         >
           The Launchpod<br/>
           Where Ideas Take Off
@@ -95,36 +104,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full md:absolute md:w-[524px] md:right-[50px] md:top-7 flex gap-3 md:gap-[13px] mt-5 md:mt-0 mb-6 md:mb-0"
+          className="w-full md:absolute md:w-[524px] md:right-[50px] md:top-7 flex gap-3 md:gap-[13px] mt-5 md:mt-0 mb-0 md:mb-0"
         >
-          <div className="w-1 h-auto md:h-[100px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
+         <div className="w-1 h-auto md:h-[110px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
           <div className="flex-1">
-            <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-3">
-              <li>Located in the business heart of Mount Road, Chennai.</li>
-              <li>This is where professionals, entrepreneurs, and visionaries connect to create impact.</li>
+            <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-1">
+              <li>Located in the business heart of Mount Road, Chennai. Meetings & product launches to strategic networking sessions,
+This is where professionals, entrepreneurs, and visionaries connect to create impact.</li>
             </ul>
           </div>
         </motion.div>
         
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full mt-6 sm:mt-8 md:mt-[42px] relative mb-8 sm:mb-10 md:mb-12"
+          className="w-full mt-0 sm:mt-0  relative mb-8 mb-0"
         >
-          {/* Background layer */}
-          <div className="absolute bottom-0 left-0 right-0 -ml-2 mr-2 sm:-ml-4 sm:mr-4 md:mr-[16px] md:-ml-[16px]">
-            <img
-              src={background}
-              alt="Background"
-              className="w-full h-[180px] sm:h-[200px] md:h-[250px] lg:h-[336px] rounded-[5px] object-cover transform translate-y-2 translate-x-2 sm:translate-y-4 sm:translate-x-4"
-              loading="lazy"
-            />
-          </div>
-          
-          {/* Main foreground image */}
-          <img
-            src={hero}
+          {/* Single image with slide up animation */}
+          <motion.img
+            variants={slideUpVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            src={heroBG1}
             alt="Modern glass house architectural design showcasing contemporary building techniques"
-            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover relative z-10 lg:-translate-x-3"
+            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover"
             loading="lazy"
           />
         </motion.div>
