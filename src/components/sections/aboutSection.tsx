@@ -88,7 +88,7 @@ const AboutSection: React.FC = () => {
             <div className="flex gap-4 items-start mb-6">
               <motion.div 
                 variants={fadeInUpVariants}
-                className="w-2 h-[120px] max-lg:h-[250px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px] -z-50"
+                className="w-2 h-[120px] max-lg:h-[250px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]"
               />
               <motion.h1 
                 variants={fadeInUpVariants}
