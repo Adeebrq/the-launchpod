@@ -1,6 +1,9 @@
 import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'ogl';
 import { useEffect, useRef } from 'react';
 import image from "../assets/carasoul.png"
+import card1 from "/card1.png"
+import card2 from "/card2.png"
+
 
 type GL = Renderer['gl'];
 
@@ -479,72 +482,68 @@ class App {
   ) {
     const defaultItems = [
       {
-        image: image,
+        image: card1,
         text: ''
 
       },
       {
-        image: image,
+        image: card2,
         text: ''
       },
       {
-        image: image,
+        image: card1,
 
         text: ''
 
       },
       {
-        image: image,
+        image: card2,
 
         text: ''
-
-
       },
       {
-        image: image,
-
-        text: ''
-
-
-      },
-      {
-        image: image,
+        image:card1,
 
         text: ''
 
 
       },
       {
-        image: image,
+        image: card2,
+
+        text: ''
+
+
+      },
+      {
+        image: card1,
 
         text: ''
 
       },
       {
-        image: image,
+        image: card2,
 
         text: ''
       },
       {
-        image: image,
-
-        text: ''
-
-      },
-      {
-        image: image,
+        image:card1,
 
         text: ''
 
       },
       {
-        image: image,
-
+        image: card2,
         text: ''
 
       },
       {
-        image: image,
+        image: card1,
+        text: ''
+
+      },
+      {
+        image: card2,
         text: ''
 
 
