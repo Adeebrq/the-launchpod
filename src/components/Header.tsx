@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ContactButton } from './ContactButton';
+import GlassSurface from './GlassSurface';
 
 interface HeaderProps {
   onBookNowClick?: () => void;
@@ -52,16 +53,28 @@ export const Header: React.FC<HeaderProps> = ({
   }, [mobileMenuOpen]);
 
   return (
-    <header ref={headerRef} className="w-full sticky top-0 z-50 bg-white/90 backdrop-blur-lg">
-      {/* Animated gradient blobs background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden rounded-b-2xl">
-        <div className="absolute top-0 left-1/4 w-48 h-48 md:w-64 md:h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob"></div>
-        <div className="absolute top-0 right-1/4 w-48 h-48 md:w-64 md:h-64 bg-sky-100 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-0 left-1/3 w-48 h-48 md:w-64 md:h-64 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-blob animation-delay-4000"></div>
+    <header ref={headerRef} className="w-full sticky top-0 z-50">
+      {/* GlassSurface Background */}
+      <div className="absolute inset-0 -z-10">
+        <GlassSurface
+          width="100%"
+          height="100%"
+          borderRadius={0}
+          displace={3}
+          distortionScale={-120}
+          redOffset={3}
+          greenOffset={10}
+          blueOffset={18}
+          brightness={50}
+          opacity={0.9}
+          mixBlendMode="normal"
+          className="rounded-b-2xl"
+          saturation={0.5}
+          blur={30}
+        >
+          <div className="w-full h-full bg-gradient-to-br from-blue-50/40 via-sky-50/30 to-cyan-50/20" />
+        </GlassSurface>
       </div>
-
-      {/* Glass effect overlay */}
-      <div className="absolute inset-0 -z-5 bg-white/10 backdrop-blur-lg border-b border-white/30 rounded-b-2xl"></div>
 
       {/* Main header container */}
       <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-12 py-3 md:py-4 max-w-full mx-auto">
@@ -84,7 +97,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <button
               onClick={() => handleNavClick('about')}
-              className={`text-sm lg:text-base font-normal transition-all duration-200 whitespace-nowrap ${
+              className={`text-sm lg:text-base font-normal transition-all  hover:text-gray-300 duration-200 whitespace-nowrap ${
                 activeNav === 'about'
                   ? 'text-[#001039] font-semibold'
                   : 'text-[#181B1E] hover:text-[#001039]'
@@ -95,7 +108,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => handleNavClick('events')}
-              className={`text-sm lg:text-base font-normal transition-all duration-200 whitespace-nowrap ${
+              className={`text-sm lg:text-base font-normal transition-all duration-200  hover:text-gray-300 whitespace-nowrap ${
                 activeNav === 'events'
                   ? 'text-[#001039] font-semibold'
                   : 'text-[#181B1E] hover:text-[#001039]'
@@ -106,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <button
               onClick={() => handleNavClick('contact')}
-              className={`text-sm lg:text-base font-normal transition-all duration-200 whitespace-nowrap ${
+              className={`text-sm lg:text-base font-normal hover:text-gray-300 transition-all duration-200 whitespace-nowrap ${
                 activeNav === 'contact'
                   ? 'text-[#001039] font-semibold'
                   : 'text-[#181B1E] hover:text-[#001039]'
@@ -221,38 +234,6 @@ export const Header: React.FC<HeaderProps> = ({
           </nav>
         )}
       </div>
-
-      {/* Custom animations */}
-      <style>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-blob {
-            animation: none;
-          }
-        }
-      `}</style>
     </header>
   );
 };

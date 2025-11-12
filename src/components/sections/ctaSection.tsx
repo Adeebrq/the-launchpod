@@ -52,7 +52,7 @@ const headingVariants: Variants = {
 
 export default function GetInTouchSection() {
   return (
-    <section id="contact" className="w-full flex flex-col items-center justify-center px-4 py-20">
+    <section id="contact" className="w-full flex flex-col items-center justify-center px-4 py-0">
       {/* Animated Container */}
       <motion.div
         variants={containerVariants}

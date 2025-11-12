@@ -90,7 +90,7 @@ export default function ParallaxShowcase() {
           
           <motion.p 
             variants={fadeInUpVariants}
-            className="text-slate-600 text-lg mb-8 leading-relaxed max-w-4xl"
+            className="text-slate-600 text-lg mb-0 leading-relaxed max-w-4xl"
           >
             Explore upcoming networking events, and industry crossovers. 
             Connect with innovators, investors, and industry leaders shaping the future of Chennai's ecosystem.

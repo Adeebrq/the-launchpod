@@ -11,6 +11,7 @@ import FAQSection from '@/components/sections/faq';
 import GetInTouchSection from '@/components/sections/ctaSection';
 import Footer from '@/components/sections/footer';
 
+
 const Index = () => {
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
   const [formData, setFormData] = useState({
@@ -20,18 +21,18 @@ const Index = () => {
     message: ''
   });
 
+
   const handleBookNowClick = () => {
     setIsBookingFormVisible(true);
     toast.success('Booking form opened!');
   };
+
 
   const handleNavigationClick = (section: string) => {
     const sectionId = section.toLowerCase();
     const element = document.getElementById(sectionId);
     
     if (element) {
-      // Use scrollIntoView with smooth behavior
-      // CSS scroll-margin-top handles the header offset
       element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
@@ -42,10 +43,12 @@ const Index = () => {
     }
   };
 
+
   const handleKeywordSearch = (keyword: string) => {
     toast.info(`Searching for: ${keyword}`);
     console.log(`Keyword search: ${keyword}`);
   };
+
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,12 +58,14 @@ const Index = () => {
       return;
     }
 
+
     toast.success('Booking request submitted successfully!');
     console.log('Form submitted:', formData);
     
     setFormData({ name: '', email: '', phone: '', message: '' });
     setIsBookingFormVisible(false);
   };
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -70,24 +75,28 @@ const Index = () => {
     }));
   };
 
+
   return (
-      <>
-      {/* Header outside main - full width naturally */}
+    <div className="min-h-screen bg-white">
+      {/* Header - now inside a proper container */}
       <Header 
         onBookNowClick={handleBookNowClick}
         onNavigationClick={handleNavigationClick}
       />
 
-      <main className="flex w-full max-w-[1440px] flex-col justify-center items-center gap-8 sm:gap-12 lg:gap-[65px] min-h-screen bg-white mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-[27px]">
-        <HeroSection onKeywordSearch={handleKeywordSearch} />
-      <AboutSection />
-      <ParallaxShowcase/>
-      <CircularGallerySection/>
-      <TestimonialSection/>
-      <FAQSection/>
-      <GetInTouchSection/>
-      <Footer/>
-      
+      {/* Main content with scroll-margin to account for sticky header */}
+      <main className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-[27px]">
+        <div className="flex flex-col justify-center items-center gap-8 sm:gap-12 lg:gap-[65px]">
+          <HeroSection onKeywordSearch={handleKeywordSearch} />
+          <AboutSection />
+          <ParallaxShowcase/>
+          <CircularGallerySection/>
+          <TestimonialSection/>
+          <FAQSection/>
+          <GetInTouchSection/>
+          <Footer/>
+        </div>
+      </main>
 
       {/* Booking Form Modal - Mobile Optimized */}
       {isBookingFormVisible && (
@@ -190,9 +199,9 @@ const Index = () => {
           </div>
         </div>
       )}
-    </main>
-    </>
+    </div>
   );
 };
+
 
 export default Index;

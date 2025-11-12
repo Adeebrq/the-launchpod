@@ -71,7 +71,7 @@ const CircularGallerySection = () => {
     <div 
       id="past-events"
       ref={sectionRef}
-      className="relative w-full"
+      className="relative w-full "
     >
       {/* Header Section */}
       <motion.div
@@ -106,7 +106,7 @@ const CircularGallerySection = () => {
 
       {/* Gallery Section - Conditional Rendering */}
       <div 
-        className="relative  md:min-h-screen w-full px-4 md:px-[50px]"
+        className="relative  md:min-h-screen w-full overflow-hidden"
       >
         {/* Background Effects - Only for desktop CircularGallery */}
         {!isMobile && (
@@ -133,6 +133,9 @@ const CircularGallerySection = () => {
           <div className={`relative z-10 h-screen transition-opacity duration-1000 ${
             isInView ? 'opacity-100' : 'opacity-0'
           }`}>
+            <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+  
             <CircularGallery
               bend={3}
               textColor="#ffffff"

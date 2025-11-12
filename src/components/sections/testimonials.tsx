@@ -163,72 +163,76 @@ const testimonials = [
         </motion.div>
 
         {/* Right Section - Card with Arrows Outside */}
-        <motion.div
-          className="flex-1 w-full relative flex flex-col items-stretch sm:items-end sm:mr-4 mt-6 sm:mt-0"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {/* Left Arrow - Outside Left (desktop/tablet only) */}
-          <button
-            onClick={handlePrev}
-            className="hidden sm:flex absolute -left-11 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full items-center justify-center cursor-pointer hover:bg-gray-200 transition z-20"
-          >
-            <ChevronLeft className="w-5 h-5 text-slate-900" />
-          </button>
+    <motion.div
+  className="flex-1 w-full flex items-center gap-4 sm:gap-11 mt-6 sm:mt-0"
+  variants={containerVariants}
+  initial="hidden"
+  animate={isInView ? 'visible' : 'hidden'}
+>
+  {/* Left Arrow - Desktop/Tablet */}
+  <button
+    onClick={handlePrev}
+    className="hidden sm:flex w-10 h-10 flex-shrink-0 bg-white rounded-full items-center justify-center cursor-pointer hover:bg-gray-200 transition z-20"
+  >
+    <ChevronLeft className="w-5 h-5 text-slate-900" />
+  </button>
 
-          {/* Testimonial Card */}
-          <motion.div
-            key={currentIndex}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            className="w-full h-auto sm:h-64 bg-white rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col"
-          >
-            {/* Testimonial Quote - Fixed height scroll if needed */}
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-800 text-base leading-relaxed mb-6 sm:mb-8 flex-1 overflow-hidden"
-            >
-              "{current.text}"
-            </motion.p>
+  {/* Testimonial Card Container */}
+  <div className="flex-1 flex flex-col items-stretch">
+    {/* Testimonial Card */}
+    <motion.div
+      key={currentIndex}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      className="w-full h-auto sm:h-64 bg-white rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col"
+    >
+      {/* Testimonial Quote */}
+      <motion.p
+        variants={itemVariants}
+        className="text-gray-800 text-base leading-relaxed mb-6 sm:mb-8 flex-1 overflow-hidden"
+      >
+        "{current.text}"
+      </motion.p>
 
-            {/* Avatar and Info - Fixed at bottom */}
-            <motion.div variants={itemVariants} className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
-                    <User size={20} className="text-gray-600" />
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">{current.name}</p>
-                <p className="text-gray-500 text-xs sm:text-sm">{current.role}</p>
-              </div>
-            </motion.div>
-          </motion.div>
+      {/* Avatar and Info */}
+      <motion.div variants={itemVariants} className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-300 rounded-full flex-shrink-0 flex items-center justify-center">
+          <User size={20} className="text-gray-600" />
+        </div>
+        <div>
+          <p className="font-semibold text-gray-900">{current.name}</p>
+          <p className="text-gray-500 text-xs sm:text-sm">{current.role}</p>
+        </div>
+      </motion.div>
+    </motion.div>
 
-          {/* Right Arrow - Outside Right (desktop/tablet only) */}
-          <button
-            onClick={handleNext}
-            className="hidden sm:flex absolute -right-11 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full items-center justify-center cursor-pointer hover:bg-gray-200 transition z-20"
-          >
-            <ChevronRight className="w-5 h-5 text-slate-900" />
-          </button>
+    {/* Mobile controls below card */}
+    <div className="sm:hidden w-full flex justify-center gap-6 mt-4">
+      <button
+        onClick={handlePrev}
+        className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition"
+      >
+        <ChevronLeft className="w-5 h-5 text-slate-900" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition"
+      >
+        <ChevronRight className="w-5 h-5 text-slate-900" />
+      </button>
+    </div>
+  </div>
 
-          {/* Mobile controls below card */}
-          <div className="sm:hidden w-full flex justify-center gap-6 mt-4">
-            <button
-              onClick={handlePrev}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition"
-            >
-              <ChevronLeft className="w-5 h-5 text-slate-900" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-200 transition"
-            >
-              <ChevronRight className="w-5 h-5 text-slate-900" />
-            </button>
-          </div>
-        </motion.div>
+  {/* Right Arrow - Desktop/Tablet */}
+  <button
+    onClick={handleNext}
+    className="hidden sm:flex w-10 h-10 flex-shrink-0 bg-white rounded-full items-center justify-center cursor-pointer hover:bg-gray-200 transition z-20"
+  >
+    <ChevronRight className="w-5 h-5 text-slate-900" />
+  </button>
+</motion.div>
+
       </div>
     </div>
   );
