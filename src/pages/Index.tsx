@@ -71,12 +71,15 @@ const Index = () => {
   };
 
   return (
-    <main className="flex w-full max-w-[1440px] flex-col justify-center items-center gap-8 sm:gap-12 lg:gap-[65px] min-h-screen bg-white mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-[27px]">
+      <>
+      {/* Header outside main - full width naturally */}
       <Header 
         onBookNowClick={handleBookNowClick}
         onNavigationClick={handleNavigationClick}
       />
-      <HeroSection onKeywordSearch={handleKeywordSearch} />
+
+      <main className="flex w-full max-w-[1440px] flex-col justify-center items-center gap-8 sm:gap-12 lg:gap-[65px] min-h-screen bg-white mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-[27px]">
+        <HeroSection onKeywordSearch={handleKeywordSearch} />
       <AboutSection />
       <ParallaxShowcase/>
       <CircularGallerySection/>
@@ -188,6 +191,7 @@ const Index = () => {
         </div>
       )}
     </main>
+    </>
   );
 };
 

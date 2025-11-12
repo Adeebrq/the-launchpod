@@ -3,7 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { Zap, MapPin, Sliders } from 'lucide-react';
 
 import { KeywordButton } from '../KeywordButton';
-import image from "../../assets/aboutUs.png"
+import image from "/aboutUs.png"
 import about1 from "/about1.png"
 
 
@@ -160,12 +160,7 @@ const AboutSection: React.FC = () => {
           </motion.div>
 
           {/* Right Side - Image */}
-          <motion.div 
-            {...animateOnView()}
-            className="relative"
-          >
-            <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
-           <motion.div 
+     <motion.div 
   initial={{ x: 100, opacity: 0 }}
   whileInView={{ 
     x: 0, 
@@ -184,16 +179,13 @@ const AboutSection: React.FC = () => {
   }}
   className="relative"
 >
-  <div className="absolute bg-gradient-to-br from-blue-200/40 to-transparent"></div>
+  <div className="absolute bg-gradient-to-br from-blue-200/80 to-transparent"></div>
   <img 
-    src={about1}
+    src={image}
     alt="Modern Architecture" 
-    className="relative w-full h-96 lg:h-[500px] object-contain ml-auto"
+    className="relative w-full h-96 lg:h-[500px]  scale-x-125 object-contain ml-auto"
   />
 </motion.div>
-
-
-          </motion.div>
         </div>
 
         {/* Stats Section - Mobile Only, shown below image */}

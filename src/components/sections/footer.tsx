@@ -80,6 +80,14 @@ const Footer = () => {
 >
   <Linkedin size={20} />
 </a>
+              <a 
+  href=" https://www.youtube.com/@THELAUNCHPOD-j2n8b" 
+  target="_blank"
+  rel="noopener noreferrer"
+                className="border border-white rounded-full p-2 hover:bg-white hover:text-black transition-colors"
+              >
+                <Youtube size={20} />
+              </a>
 
             </div>
           </div>

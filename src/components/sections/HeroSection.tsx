@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin, Youtube } from 'lucide-react';
 import { KeywordButton } from '../KeywordButton';
 import ScrollingBanner from '../scroll';
 import heroBG1 from "/heroBG1.png"
@@ -55,18 +55,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px]">
+    <section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px] pb-0 lg:mt-10">
       {/* Social Media Icons */}
       <div className="absolute right-3 top-0 md:right-0 md:top-14 flex flex-col gap-3 z-10">
-        <a
-          href="https://share.google/H6nVYmJ0EBzJg9WXw"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-          aria-label="Instagram"
-        >
-          <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
-        </a>
+
         <a
           href="https://www.linkedin.com/company/thelaunch-pod/"
           target="_blank"
@@ -76,6 +68,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
         </a>
+        <a
+          href="https://www.youtube.com/@THELAUNCHPOD-j2n8b"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+          aria-label="Youtube"
+        >
+          <Youtube className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
+        </a>
+        <a
+          href="https://share.google/H6nVYmJ0EBzJg9WXw"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+          aria-label="Instagram"
+        >
+          <Instagram className="w-5 h-5 sm:w-6 sm:h-6 text-gray-900" />
+        </a>
       </div>
 
       <motion.div
@@ -83,14 +93,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="w-full max-w-[1240px] lg:-translate-y-14"
+        className="w-full max-w-[1240px] lg:-translate-y-7 "
       >
         <motion.h1
           variants={fadeInUpVariants}
-          className="w-full text-[#0B2549] text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight sm:leading-[50px] md:leading-[71px] mb-0 sm:mb-[15px] md:mb-[19px]"
+          className="w-full text-[#0B2549] text-3xl sm:text-4xl md:text-5xl font-semibold leading-none mb-0 sm:mb-[15px] md:mb-[19px]"
         >
           The Launchpod<br/>
-          Where Ideas Take Off
+          Where Ideas Take Off<br/>
+          At Anna Salai, Chennai
         </motion.h1>
         
         <motion.div variants={fadeInUpVariants}>
@@ -98,7 +109,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             keyword="Launch"
             animationDistance='100px'
             onClick={handleKeywordClick}
-            className="mb-5 md:mb-[33px]"
+className="mb-5 md:mb-[33px] mt-[13px] sm:mt-0"
           />
         </motion.div>
         
@@ -106,10 +117,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           variants={fadeInUpVariants}
           className="w-full md:absolute md:w-[524px] md:right-[50px] md:top-7 flex gap-3 md:gap-[13px] mt-5 md:mt-0 mb-0 md:mb-0"
         >
-         <div className="w-1 h-auto md:h-[110px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
+         <div className="w-1 h-auto md:h-[80px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
           <div className="flex-1">
             <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-1">
-              <li>Located in the business heart of Mount Road, Chennai. Meetings & product launches to strategic networking sessions,
+              <li>Meetings & product launches to strategic networking sessions,
 This is where professionals, entrepreneurs, and visionaries connect to create impact.</li>
             </ul>
           </div>
@@ -117,7 +128,7 @@ This is where professionals, entrepreneurs, and visionaries connect to create im
         
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full mt-0 sm:mt-0  relative mb-8 mb-0"
+          className="w-full mt-0 sm:mt-0  relative mb-8 mb-0 lg:-mt-16 "
         >
           {/* Single image with slide up animation */}
           <motion.img
@@ -127,14 +138,17 @@ This is where professionals, entrepreneurs, and visionaries connect to create im
             viewport={{ once: true }}
             src={heroBG1}
             alt="Modern glass house architectural design showcasing contemporary building techniques"
-            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover"
+            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover lg:-mt-16 "
             loading="lazy"
           />
         </motion.div>
         
-        <motion.div variants={fadeInUpVariants}>
-          <ScrollingBanner/>
-        </motion.div>
+        <motion.div 
+  variants={fadeInUpVariants}
+  className="w-screen relative left-1/2 -ml-[50vw] lg:-mt-5"
+>
+  <ScrollingBanner/>
+</motion.div>
       </motion.div>
     </section>
   );
