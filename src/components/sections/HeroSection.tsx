@@ -97,7 +97,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       >
         <motion.h1
           variants={fadeInUpVariants}
-          className="w-full text-[#0B2549] text-3xl sm:text-4xl md:text-5xl font-semibold leading-none mb-0 sm:mb-[15px] md:mb-[19px]"
+          className="w-full text-[#0B2549] text-3xl sm:text-2xl md:text-5xl font-semibold leading-none mb-0 sm:mb-[15px] md:mb-[19px]"
         >
           The Launchpod<br/>
           Where Ideas Take Off<br/>
