@@ -151,7 +151,7 @@ export default function Card({
               whileTap={{ scale: 0.95 }}
               className="mt-4 sm:mt-6 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#001039] text-white font-semibold rounded-full hover:bg-[#002055] transition-colors duration-200 text-sm sm:text-base self-start"
             >
-              More Details
+              Register Now
             </motion.button>
           )}
         </div>

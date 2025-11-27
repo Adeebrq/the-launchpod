@@ -23,12 +23,12 @@ export const KeywordButton: React.FC<KeywordButtonProps> = ({
   };
 
   return (
-    <div className={`h-10 shrink-0 rounded-[30px] w-fit ${className}`}>
+    <div className={`h-10 shrink-0 rounded-[30px] w-fit relative z-30 ${className}`}>
       <button
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={handleClick}
-        className="relative flex h-10 justify-center items-center gap-9 shrink-0 bg-[#001039] pl-[15px] pr-1 py-[5px] rounded-[30px] transition-all duration-200 hover:bg-[#002055] active:scale-95 overflow-hidden"
+        className="relative z-30 flex h-10 justify-center items-center gap-9 shrink-0 bg-[#001039] pl-[15px] pr-1 py-[5px] rounded-[30px] transition-all duration-200 hover:bg-[#002055] active:scale-95 overflow-hidden"
         aria-label={`Search for ${keyword}`}
       >
         <span

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 import { Header } from '@/components/Header';
 import { HeroSection } from '../components/sections/HeroSection';
 import AboutSection from '../components/sections/aboutSection';
@@ -12,8 +13,13 @@ import GetInTouchSection from '@/components/sections/ctaSection';
 import Footer from '@/components/sections/footer';
 
 
+const EMAILJS_SERVICE_ID = 'service_tnwc6vs';
+const EMAILJS_TEMPLATE_ID = 'template_trnmkfg';
+const EMAILJS_PUBLIC_KEY = 'cS0JrvhVB0GMzCjY1';
+
 const Index = () => {
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,12 +27,14 @@ const Index = () => {
     message: ''
   });
 
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
 
   const handleBookNowClick = () => {
     setIsBookingFormVisible(true);
     toast.success('Booking form opened!');
   };
-
 
   const handleNavigationClick = (section: string) => {
     const sectionId = section.toLowerCase();
@@ -43,14 +51,12 @@ const Index = () => {
     }
   };
 
-
   const handleKeywordSearch = (keyword: string) => {
     toast.info(`Searching for: ${keyword}`);
     console.log(`Keyword search: ${keyword}`);
   };
 
-
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.phone) {
@@ -58,14 +64,49 @@ const Index = () => {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
 
-    toast.success('Booking request submitted successfully!');
-    console.log('Form submitted:', formData);
-    
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    setIsBookingFormVisible(false);
+    const phoneRegex = /^[0-9\s\-\+\(\)]+$/;
+    if (!phoneRegex.test(formData.phone)) {
+      toast.error('Please enter a valid phone number');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // IMPORTANT: Match your template variables exactly
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message || 'No message provided'
+      };
+
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams
+      );
+
+      if (result.status === 200) {
+        toast.success('Booking request submitted successfully!');
+        console.log('Email sent successfully:', result);
+
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setIsBookingFormVisible(false);
+      }
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      toast.error('Failed to submit booking. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -75,38 +116,41 @@ const Index = () => {
     }));
   };
 
+  const handleCloseModal = () => {
+    if (!isSubmitting) {
+      setIsBookingFormVisible(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - now inside a proper container */}
       <Header 
         onBookNowClick={handleBookNowClick}
         onNavigationClick={handleNavigationClick}
       />
 
-      {/* Main content with scroll-margin to account for sticky header */}
       <main className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-[27px]">
         <div className="flex flex-col justify-center items-center gap-8 sm:gap-12 lg:gap-[65px]">
-          <HeroSection onKeywordSearch={handleKeywordSearch} />
-          <AboutSection />
-          <ParallaxShowcase/>
-          <CircularGallerySection/>
-          <TestimonialSection/>
-          <FAQSection/>
-          <GetInTouchSection/>
-          <Footer/>
+          <HeroSection onKeywordSearch={handleKeywordSearch} onBookNowClick={handleBookNowClick} />
+          <AboutSection onBookNowClick={handleBookNowClick} />
+          <ParallaxShowcase />
+          <CircularGallerySection />
+          <TestimonialSection />
+          <FAQSection />
+          <GetInTouchSection onBookNowClick={handleBookNowClick} />
+          <Footer />
         </div>
       </main>
 
-      {/* Booking Form Modal - Mobile Optimized */}
       {isBookingFormVisible && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-3 sm:p-4">
           <div className="bg-white rounded-lg w-full max-w-md max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center">
               <h2 className="text-lg sm:text-xl font-semibold text-[#0B2549]">Book Now</h2>
               <button
-                onClick={() => setIsBookingFormVisible(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl leading-none touch-manipulation"
+                onClick={handleCloseModal}
+                disabled={isSubmitting}
+                className="text-gray-500 hover:text-gray-700 disabled:text-gray-300 text-2xl leading-none touch-manipulation transition-colors"
                 aria-label="Close booking form"
               >
                 ×
@@ -114,94 +158,99 @@ const Index = () => {
             </div>
             
             <div className="p-4 sm:p-6">
-              <div className="space-y-4">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-[#0B2549] mb-1">
-                    Full Name *
+                  <label className="block text-sm font-medium text-[#0B2549] mb-1">
+                    Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
+                    disabled={isSubmitting}
                     required
-                    className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#001039] focus:border-transparent"
-                    placeholder="Enter your full name"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                    placeholder="Enter your name"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-[#0B2549] mb-1">
-                    Email Address *
+                  <label className="block text-sm font-medium text-[#0B2549] mb-1">
+                    Email Address <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
-                    id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    disabled={isSubmitting}
                     required
-                    className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#001039] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
                     placeholder="Enter your email"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-[#0B2549] mb-1">
-                    Phone Number *
+                  <label className="block text-sm font-medium text-[#0B2549] mb-1">
+                    Phone Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
-                    id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
+                    disabled={isSubmitting}
                     required
-                    className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#001039] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
                     placeholder="Enter your phone number"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-[#0B2549] mb-1">
-                    Message (Optional)
+                  <label className="block text-sm font-medium text-[#0B2549] mb-1">
+                    Message
                   </label>
                   <textarea
-                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
+                    disabled={isSubmitting}
                     rows={3}
-                    className="w-full px-3 py-2 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#001039] focus:border-transparent resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
                     placeholder="Any additional information..."
                   />
                 </div>
-                
-                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2">
+
+                <div className="flex flex-col sm:flex-row gap-2 pt-4">
                   <button
                     type="button"
-                    onClick={() => setIsBookingFormVisible(false)}
-                    className="w-full sm:flex-1 px-4 py-2.5 text-base font-medium border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 active:bg-gray-100 transition-colors duration-200"
+                    onClick={handleCloseModal}
+                    disabled={isSubmitting}
+                    className="w-full sm:flex-1 px-4 py-2 border border-gray-300 rounded-md"
                   >
                     Cancel
                   </button>
+
                   <button
                     type="submit"
-                    onClick={handleFormSubmit}
-                    className="w-full sm:flex-1 px-4 py-2.5 text-base font-medium bg-[#001039] text-white rounded-md hover:bg-[#002055] active:bg-[#000820] transition-colors duration-200"
+                    disabled={isSubmitting}
+                    className="w-full sm:flex-1 px-4 py-2 bg-[#001039] text-white rounded-md"
                   >
-                    Submit Booking
+                    {isSubmitting ? "Submitting..." : "Submit Booking"}
                   </button>
                 </div>
-              </div>
+
+              </form>
             </div>
+
           </div>
         </div>
       )}
+
     </div>
   );
 };
-
 
 export default Index;

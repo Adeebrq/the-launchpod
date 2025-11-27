@@ -7,10 +7,12 @@ import heroBG1 from "/heroBG1.png"
 
 interface HeroSectionProps {
   onKeywordSearch?: (keyword: string) => void;
+  onBookNowClick?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  onKeywordSearch
+  onKeywordSearch,
+  onBookNowClick
 }) => {
   const [currentKeyword] = useState('Keyword');
 
@@ -101,15 +103,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           The Launchpod<br/>
           Where Ideas Take Off<br/>
-          At Anna Salai, Chennai
+          
         </motion.h1>
         
-        <motion.div variants={fadeInUpVariants}>
+        <motion.div variants={fadeInUpVariants} className="relative z-20">
           <KeywordButton 
             keyword="Launch"
             animationDistance='100px'
-            onClick={handleKeywordClick}
-className="mb-5 md:mb-[33px] mt-[13px] sm:mt-0"
+            onClick={onBookNowClick || handleKeywordClick}
+            className="mb-5 md:mb-[33px] mt-[13px] sm:mt-0"
           />
         </motion.div>
         
@@ -117,18 +119,18 @@ className="mb-5 md:mb-[33px] mt-[13px] sm:mt-0"
           variants={fadeInUpVariants}
           className="w-full md:absolute md:w-[524px] md:right-[50px] md:top-7 flex gap-3 md:gap-[13px] mt-5 md:mt-0 mb-0 md:mb-0"
         >
-         <div className="w-1 h-auto md:h-[80px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
+         <div className="w-1 h-auto md:h-[50px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
           <div className="flex-1">
             <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-1">
-              <li>Meetings & product launches to strategic networking sessions,
-This is where professionals, entrepreneurs, and visionaries connect to create impact.</li>
+<li>A space that can be filled with people, their ideas, their aspirations, their <span className="bold-text">work</span>, their <span className="bold-text">craft</span>, their <span className="bold-text">impact</span>.</li>
+
             </ul>
           </div>
         </motion.div>
         
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full mt-0 sm:mt-0  relative mb-8 mb-0 lg:-mt-16 "
+          className="w-full mt-0 sm:mt-0 relative mb-8 mb-0 lg:-mt-8 z-10"
         >
           {/* Single image with slide up animation */}
           <motion.img
@@ -138,14 +140,14 @@ This is where professionals, entrepreneurs, and visionaries connect to create im
             viewport={{ once: true }}
             src={heroBG1}
             alt="Modern glass house architectural design showcasing contemporary building techniques"
-            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover lg:-mt-16 "
+            className="w-full h-[200px] sm:h-[200px] md:h-[250px] lg:h-[440px] shrink-0 rounded-[5px] object-cover pointer-events-none"
             loading="lazy"
           />
         </motion.div>
         
         <motion.div 
   variants={fadeInUpVariants}
-  className="w-screen relative left-1/2 -ml-[50vw] lg:-mt-5"
+  className="w-screen relative left-1/2 -ml-[50vw] "
 >
   <ScrollingBanner/>
 </motion.div>

@@ -52,7 +52,11 @@ const animateOnView = (delay = 0) => ({
   transition: { delay }
 });
 
-const AboutSection: React.FC = () => {
+interface AboutSectionProps {
+  onBookNowClick?: () => void;
+}
+
+const AboutSection: React.FC<AboutSectionProps> = ({ onBookNowClick }) => {
   return (
     <section id="about" className="relative overflow-hidden w-full max-w-[1340px] px-3 sm:px-5 md:px-[50px]">
       {/* Animated Background Elements */}
@@ -100,18 +104,25 @@ const AboutSection: React.FC = () => {
               </motion.h1>
             </div>
             
-            <motion.p 
-              variants={fadeInUpVariants}
-              className="text-slate-600 text-lg mb-8 leading-relaxed  z-20"
-            >
-              Designed by Offisbay, The Launchpod redefines how ideas are shared and scaled. 
-              With flexible spacing and seating, world-class amenities, and a future-ready ambiance, 
-              The Launchpod is your destination for business growth, collaboration, and next-gen networking.
-            </motion.p>
+       <motion.p 
+  variants={fadeInUpVariants}
+  className="text-slate-600 text-lg mb-8 leading-relaxed z-20"
+>
+  <p>The Launchpod is a curated space designed for:</p>
+  <ul className="list-disc pl-6 space-y-2">
+    <li>Podcasts & Interviews that inspire and inform</li>
+    <li>Networking & Mini Events that connect and catalyze</li>
+    <li>Training Sessions that build capability and confidence</li>
+    <li>Business Conversations that shape strategy & spark innovation</li>
+    <li>Angels and VC find the right startups to invest, support and scale</li>
+  </ul>
+</motion.p>
+
             <motion.div variants={fadeInUpVariants}>
               <KeywordButton
                 keyword="Experience Now"
                 animationDistance='160px'
+                onClick={onBookNowClick}
                 className="mb-[33px] max-sm:mb-5"
               />
             </motion.div>
@@ -122,7 +133,7 @@ const AboutSection: React.FC = () => {
               className="grid grid-cols-3 grid-rows-2 gap-0 max-w-3xl max-lg:hidden"
             >
               {/* First Row - Circles only */}
-              <motion.div 
+              {/* <motion.div 
                 variants={fadeInUpVariants}
                 className="flex justify-start items-start col-span-3 "
               >
@@ -139,10 +150,10 @@ const AboutSection: React.FC = () => {
                     />
                   ))}
                 </div>
-              </motion.div>
+              </motion.div> */}
 
               {/* Stats */}
-              {[
+              {/* {[
                 { value: '100', label: 'Corporate Events Hosted' },
                 { value: '100', label: 'Industry Collaborations' },
                 { value: '100', label: 'Professionals Connected' }
@@ -155,7 +166,7 @@ const AboutSection: React.FC = () => {
                   <h3 className="text-3xl font-bold text-slate-900 mb-2">{stat.value}</h3>
                   <p className="text-slate-600">{stat.label}</p>
                 </motion.div>
-              ))}
+              ))} */}
             </motion.div>
           </motion.div>
 
@@ -197,7 +208,7 @@ const AboutSection: React.FC = () => {
           className="grid grid-cols-3 grid-rows-2 gap-0 max-w-3xl lg:hidden mb-10 max-lg:mb-6"
         >
           {/* First Row - Circles only */}
-          <motion.div 
+          {/* <motion.div 
             variants={fadeInUpVariants}
             className="flex justify-start items-start col-span-3 "
           >
@@ -214,10 +225,10 @@ const AboutSection: React.FC = () => {
                 />
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Stats */}
-          {[
+          {/* {[
             { value: '100', label: 'Corporate Events Hosted' },
             { value: '100', label: 'Industry Collaborations' },
             { value: '100', label: 'Professionals Connected' }
@@ -230,7 +241,7 @@ const AboutSection: React.FC = () => {
               <h3 className="text-3xl font-bold text-slate-900 mb-2">{stat.value}</h3>
               <p className="text-slate-600">{stat.label}</p>
             </motion.div>
-          ))}
+          ))} */}
         </motion.div>
 
         {/* Features Section */}
@@ -239,7 +250,7 @@ const AboutSection: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false }}
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-8 -mt-8"
         >
           {[
             {

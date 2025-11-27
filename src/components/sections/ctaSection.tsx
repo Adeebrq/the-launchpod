@@ -50,7 +50,11 @@ const headingVariants: Variants = {
   },
 };
 
-export default function GetInTouchSection() {
+interface GetInTouchSectionProps {
+  onBookNowClick?: () => void;
+}
+
+export default function GetInTouchSection({ onBookNowClick }: GetInTouchSectionProps) {
   return (
     <section id="contact" className="w-full flex flex-col items-center justify-center px-4 py-0">
       {/* Animated Container */}
@@ -107,6 +111,7 @@ export default function GetInTouchSection() {
             <KeywordButton
               animationDistance='165px'
               keyword="Request a Quote"
+              onClick={onBookNowClick}
             />
           </motion.div>
 
