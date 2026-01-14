@@ -32,7 +32,7 @@ const EventCardsCarousel: React.FC = () => {
     {
       id: 2,
       imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800',
-      title: 'Tech Conference',
+      title: 'Tech Conference', 
       date: 'Nov 20, 2025',
       time: '2:00 PM',
       capacity: 100,

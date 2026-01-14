@@ -1,9 +1,37 @@
-import React, { useState } from 'react';
-import { motion, Variants } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, Variants, useInView } from 'framer-motion';
 import { Instagram, Linkedin, Youtube } from 'lucide-react';
+import { gsap } from 'gsap';
 import { KeywordButton } from '../KeywordButton';
 import ScrollingBanner from '../scroll';
 import heroBG1 from "/heroBG1.png"
+
+type HeroWord = {
+  text: string;
+  bold?: boolean;
+  suffix?: string;
+};
+
+const heroLineWords: HeroWord[] = [
+  { text: 'A' },
+  { text: 'space' },
+  { text: 'that' },
+  { text: 'can' },
+  { text: 'be' },
+  { text: 'filled' },
+  { text: 'with' },
+  { text: 'people,' },
+  { text: 'their' },
+  { text: 'ideas,' },
+  { text: 'their' },
+  { text: 'aspirations,' },
+  { text: 'their' },
+  { text: 'work', bold: true, suffix: ',' },
+  { text: 'their' },
+  { text: 'craft', bold: true, suffix: ',' },
+  { text: 'their' },
+  { text: 'impact', bold: true, suffix: '.' },
+];
 
 interface HeroSectionProps {
   onKeywordSearch?: (keyword: string) => void;
@@ -15,6 +43,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onBookNowClick
 }) => {
   const [currentKeyword] = useState('Keyword');
+  const heroLineRef = useRef<HTMLLIElement | null>(null);
+  const heroLineInView = useInView(heroLineRef, { amount: 0.4, margin: '-10% 0px' });
 
   const fadeInUpVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.98 },
@@ -56,6 +86,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     console.log(`Searching for: ${currentKeyword}`);
   };
 
+  useEffect(() => {
+    if (!heroLineRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (!heroLineInView) {
+        gsap.set('.hero-word', { opacity: 0, y: 20 });
+        return;
+      }
+
+      gsap.fromTo(
+        '.hero-word',
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.45,
+          stagger: 0.08,
+          ease: 'power3.out'
+        }
+      );
+    }, heroLineRef);
+
+    return () => ctx.revert();
+  }, [heroLineInView]);
+
   return (
     <section className="w-full max-w-[1340px] relative px-3 sm:px-5 md:px-[50px] pb-0 lg:mt-10">
       {/* Social Media Icons */}
@@ -95,14 +150,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="w-full max-w-[1240px] lg:-translate-y-7 "
+        className="w-full max-w-[1240px] lg:-translate-y-3 "
       >
         <motion.h1
           variants={fadeInUpVariants}
           className="w-full text-[#0B2549] text-3xl sm:text-2xl md:text-5xl font-semibold leading-none mb-0 sm:mb-[15px] md:mb-[19px]"
         >
-          The Launchpod<br/>
-          Where Ideas Take Off<br/>
+          Where Ideas Take Off
           
         </motion.h1>
         
@@ -122,7 +176,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
          <div className="w-1 h-auto md:h-[50px] shrink-0 bg-[rgba(189,216,233,0.59)] rounded-[10px]" />
           <div className="flex-1">
             <ul className="w-full text-[#0B2549] text-lg sm:text-base md:text-lg font-normal list-none space-y-1">
-<li>A space that can be filled with people, their ideas, their aspirations, their <span className="bold-text">work</span>, their <span className="bold-text">craft</span>, their <span className="bold-text">impact</span>.</li>
+              <li ref={heroLineRef}>
+                {heroLineWords.map((word, index) => (
+                  <span
+                    key={`${word.text}-${index}`}
+                    className="hero-word inline-block mr-1"
+                    style={{ opacity: 0 }}
+                  >
+                    {word.bold ? (
+                      <span className="bold-text">{word.text}</span>
+                    ) : (
+                      word.text
+                    )}
+                    {word.suffix ?? ''}
+                    {index !== heroLineWords.length - 1 && ' '}
+                  </span>
+                ))}
+              </li>
 
             </ul>
           </div>
@@ -130,7 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         
         <motion.div 
           variants={fadeInUpVariants}
-          className="w-full mt-0 sm:mt-0 relative mb-8 mb-0 lg:-mt-8 z-10"
+          className="w-full mt-0 sm:mt-0 relative mb-8 mb-0 lg:mt-7 z-10"
         >
           {/* Single image with slide up animation */}
           <motion.img

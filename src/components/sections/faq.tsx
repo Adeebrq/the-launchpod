@@ -10,39 +10,46 @@ interface FAQItem {
   question: string;
   answer: string;
 }
-
 const faqData = [
   {
     id: '1',
     question: 'What is THE LAUNCHPOD, and what professional spaces do we offer on Mount Road, Chennai?',
-    answer: 'THE LAUNCHPOD sits along Mount Road in Chennai, offering fresh spots for events or company meetups. Whether you need room to brainstorm, space to host investors, or a place that just works  this spot’s built with startups and pros in mind. Swapping rigid setups for adaptable layouts, it keeps things moving without hassle. Pick your vibe, lock in the date, tech included  no extra steps.',
+    answer:
+      'THE LAUNCHPOD is a dynamic launch space on Mount Road, designed for founders, teams, and professionals who thrive on momentum. From investor meets to brainstorming sessions, every setup inspires clarity and action. Pick your layout, book your slot, and step into a tech-ready space built for productivity.',
   },
   {
     id: '2',
     question: 'What types of event venues does THE LAUNCHPOD offer on Mount Road, Chennai?',
-    answer: 'THE LAUNCHPOD offers a variety of work-friendly spaces near Mount Road, Chennai  including modern conference areas, compact seminar zones, product launch rooms, creative team hangouts, and flexible setups suited for company meetups, casual connects, or skill-building sessions.',
+    answer:
+      'THE LAUNCHPOD offers curated spaces including modern conference lounges, seminar corners, launch-friendly demo rooms, and collaborative team hubs, each designed to elevate meetings, connects, and learning sessions.',
   },
   {
     id: '3',
     question: 'How can I book a THE LAUNCHPOD event hall for corporate gatherings or product launches near Mount Road?',
-    answer: 'You can grab a slot at THE LAUNCHPOD event space quickly using the booking tool on our site, or contact our team directly for custom options and availability near Mount Road in Chennai.',
+    answer:
+      'Secure your space in minutes via our online booking portal, or contact our team for customised options and Mount Road availability.',
   },
   {
     id: '4',
     question: 'What flexible event spaces are available at THE LAUNCHPOD events?',
-    answer: 'THE LAUNCHPOD setup shifts easily for small events such as close-knit team huddles, startup pitch sessions, private company meetups, and workshops. It fits up to 40 people, with adaptable seating and customizable tech setups to match your needs.',
+    answer:
+      'Our spaces flex to fit your goals! From tight-knit team huddles to pitch sessions, workshops, and private corporate meets. With room for up to 40 attendees and customizable AV setups, each format adapts smoothly.',
   },
   {
     id: '5',
     question: 'How do I reserve a conference hall, seminar room, or training space at THE LAUNCHPOD?',
-    answer: 'To book a meeting area, workshop spot, or talk room, head to our website or reach out directly to our support team to discuss timing, requirements, and plans that fit your event.',
+    answer:
+      'Book your preferred room on our website or connect with our support team to align the setup, timing, and essentials for your event.',
   },
   {
     id: '6',
-    question: 'What makes THE LAUNCHPOD a premier choice for business workshops, industry seminars, and strategic networking events in Mount Road, Chennai?',
-    answer: 'THE LAUNCHPOD stands out on Mount Road with ready-to-use spaces for every business need. Smart setups and smooth planning make it ideal for training sessions, meetups, and corporate gatherings. From start to finish, services align seamlessly, helping events happen without fuss.',
+    question:
+      'What makes THE LAUNCHPOD a premier choice for business workshops, industry seminars, and strategic networking events in Mount Road, Chennai?',
+    answer:
+      'With thoughtful design, seamless coordination, and ready-to-use infrastructure, THE LAUNCHPOD makes workshops sharper and networking more meaningful. A standout choice for impact-driven events on Mount Road.',
   },
 ];
+
 
 
 // Animation variants
@@ -131,8 +138,8 @@ export default function FAQSection() {
   className="text-slate-600 text-lg mb-8 leading-relaxed px-4 md:px-8 max-w-4xl"
 >
   If you don't find what you need, please contact us at{' '}
-  <a href="mailto:info@launchpod.com" className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-900 transition-colors">
-    <span>info@launchpod.com</span>
+  <a href="mailto:thelaunchpod1@gmail.com" className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-900 transition-colors">
+    <span>thelaunchpod1@gmail.com</span>
   </a>
 </motion.p>
 

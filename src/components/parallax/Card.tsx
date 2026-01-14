@@ -101,36 +101,39 @@ export default function Card({
           {/* Info Grid */}
           <div className="grid grid-cols-3 gap-2 sm:gap-[30px] mt-3 sm:mt-[20px]">
             {/* Date */}
-            <div className="flex flex-col items-center sm:items-start gap-2 sm:gap-[12px]">
-              <div className="w-[44px] h-[44px] sm:w-[60px] sm:h-[60px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-900 sm:w-[28px] sm:h-[28px]">
+            <div className="flex flex-col items-center sm:items-start gap-1 sm:gap-[3px]">
+              <div className="w-[34px] h-[34px] sm:w-[40px] sm:h-[40px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
+
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-900 sm:w-[28px] sm:h-[28px]">
                   <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2"/>
                   <path d="M16 2V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   <path d="M8 2V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                   <path d="M3 10H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-black text-xs sm:text-sm font-medium">Date</span>
-              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{date}</span>
+              {/* <span className="text-black text-md sm:text-sm font-medium">Date</span> */}
+              <span className="text-black font-bold text-md  text-center sm:text-left">{date}</span>
             </div>
 
 
             {/* Time */}
-            <div className="flex flex-col items-center sm:items-start gap-2 sm:gap-[12px]">
-              <div className="w-[44px] h-[44px] sm:w-[60px] sm:h-[60px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
+            <div className="flex flex-col items-center sm:items-start gap-1 sm:gap-[3px]">
+
+              <div className="w-[34px] h-[34px] sm:w-[40px] sm:h-[40px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-900 sm:w-[28px] sm:h-[28px]">
                   <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
                   <path d="M12 7V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-black text-xs sm:text-sm font-medium">Time</span>
-              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{time}</span>
+              {/* <span className="text-black text-md sm:text-sm font-medium">Time</span> */}
+              <span className="text-black font-bold text-md  text-center sm:text-left">{time}</span>
             </div>
 
 
             {/* Capacity */}
-            <div className="flex flex-col items-center sm:items-start gap-2 sm:gap-[12px]">
-              <div className="w-[44px] h-[44px] sm:w-[60px] sm:h-[60px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
+            <div className="flex flex-col items-center sm:items-start gap-1 sm:gap-[3px]">
+
+              <div className="w-[34px] h-[34px] sm:w-[40px] sm:h-[40px] rounded-full bg-blue-200/50 backdrop-blur-md flex items-center justify-center hover:bg-blue-300/60 transition-colors border border-blue-400/40">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-blue-900 sm:w-[28px] sm:h-[28px]">
                   <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="2"/>
                   <path d="M2 20C2 20 2 16 8 16C14 16 14 20 14 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -138,8 +141,8 @@ export default function Card({
                   <path d="M10 20C10 20 10 16 16 16C22 16 22 20 22 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span className="text-black text-xs sm:text-sm font-medium">Capacity</span>
-              <span className="text-black font-bold text-[12px] sm:text-[14px] text-center sm:text-left">{capacity}</span>
+              {/* <span className="text-black text-md sm:text-sm font-medium">Seats</span> */}
+              <span className="text-black font-bold text-md  text-center sm:text-left">{capacity}</span>
             </div>
           </div>
 

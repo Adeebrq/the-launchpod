@@ -4,13 +4,15 @@ import sparkles from "../assets/sparkles.svg"
 
 const bannerItems = [
   'Company Meetups',
-  'Product Launch Rooms',
+  'Product Launch',
   'Modern Conference Areas',
+  'Startup Mixers',
+  'Investors Meetups',
   'Casual Connects',
+  'Product Demos',
   'Workshops',
-  'Private Company Meetups',
+  'Company Meetups',
   'Startup Pitch Sessions',
-  'Modern Elegance',
 ];
 
 const ScrollingBanner: React.FC = () => {

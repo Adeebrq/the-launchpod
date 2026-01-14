@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import image from "../assets/carasoul.png"
 import card1 from "/card1.png"
 import card2 from "/card2.png"
-import card3 from "/event3.png"
+import card3 from "/vard3.png"
 
 
 type GL = Renderer['gl'];
@@ -492,49 +492,43 @@ class App {
         text: ''
       },
       {
-        image: card1,
+        image: card3,
 
         text: ''
-
-      },
-      {
-        image: card2,
-
-        text: ''
-      },
-      {
-        image:card1,
-
-        text: ''
-
-
-      },
-      {
-        image: card2,
-
-        text: ''
-
 
       },
       {
         image: card1,
 
         text: ''
-
       },
       {
         image: card2,
 
         text: ''
+
+
       },
       {
-        image:card1,
+        image: card3,
+
+        text: ''
+
+
+      },
+      {
+        image: card1,
 
         text: ''
 
       },
-      {
+        {
         image: card2,
+        text: ''
+
+      },
+      {
+        image: card3,
         text: ''
 
       },
@@ -546,9 +540,6 @@ class App {
       {
         image: card2,
         text: ''
-
-
-
       }
     ];
     const galleryItems = items && items.length ? items : defaultItems;

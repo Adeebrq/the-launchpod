@@ -12,7 +12,7 @@ export const projects = [
   tag: "Startup Workshop",
   date: "13th December 2025",
   time: "10:00 AM – 1:00 PM",
-  capacity: "30 participants"
+  capacity: "30 Builders"
 },
 
 //  {
